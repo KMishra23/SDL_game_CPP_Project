@@ -11,7 +11,7 @@ public:
 	~KeyboardManager();
 
 	void KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap);
-	bool Iscolliding(int direction, int x, int y, Map* mymap);
+	bool IscollidingWithWalls(int direction, int x, int y, Map* mymap);
 
 private:
 	SDL_Event event;

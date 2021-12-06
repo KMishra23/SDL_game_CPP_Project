@@ -1,5 +1,5 @@
 #include"KeyboardInputManager.h"
-bool KeyboardManager::Iscolliding(int direction,int x,int y,Map* mymap)
+bool KeyboardManager::IscollidingWithWalls(int direction,int x,int y,Map* mymap)
 {
 
 	if (direction == 0 && mymap->CollisionQuery(x,y-32))
@@ -22,5 +22,13 @@ bool KeyboardManager::Iscolliding(int direction,int x,int y,Map* mymap)
 		cout << "collision ho rha hai" << endl;
 		return true;
 	}
+	return false;
+}
+bool IsCollidingWithBullet()
+{
+	return true;
+}
+bool IsCollidingWithEnemy()
+{
 	return false;
 }
