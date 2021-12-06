@@ -2,8 +2,8 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 
-const int SCREEN_WIDTH = 1600;
-const int SCREEN_HEIGHT = 900;
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 800;
 
 Game* game = nullptr;
 

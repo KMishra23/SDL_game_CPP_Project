@@ -18,9 +18,11 @@ public:
 	void Sprinting();
 	void Walking();
 	void Update();
+	int GetPosX();
+	int GetPosY();
 
 private:
-	int speedMultiplier = 16;
+	int speedMultiplier = 32;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();

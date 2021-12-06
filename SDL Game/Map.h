@@ -12,6 +12,7 @@ public:
 
 	void LoadMap(int arr[20][25]);
 	void DrawMap();
+	bool CollisionQuery(int x, int y);
 	
 private:
 	SDL_Rect src, dest;

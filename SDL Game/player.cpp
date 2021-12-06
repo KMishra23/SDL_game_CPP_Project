@@ -58,3 +58,11 @@ void Player::Update()
 	destRect.w = srcRect.w * 2;
 	destRect.h = srcRect.h * 2;
 }
+int Player::GetPosX()
+{
+	return xpos;
+}
+int Player::GetPosY()
+{
+	return ypos;
+}

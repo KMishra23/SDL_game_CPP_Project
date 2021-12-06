@@ -3,14 +3,15 @@
 #define keymanager_HEADER
 
 #include "player.h"
-
+#include"Map.h"
 class KeyboardManager
 {
 public:
 	KeyboardManager();
 	~KeyboardManager();
 
-	void KeyInputEvent(Player* player, const Uint8 *keystates);
+	void KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap);
+	bool Iscolliding(int direction, int x, int y, Map* mymap);
 
 private:
 	SDL_Event event;

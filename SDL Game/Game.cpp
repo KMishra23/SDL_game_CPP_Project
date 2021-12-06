@@ -43,7 +43,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new Player("Assets/LinkDownAnimation1.png", 200, 200, 4);
+	player = new Player("Assets/LinkDownAnimation1.png", 0, 0, 4);
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler();
 	player->assignAnimator(PlayerAnimator);
 	map = new Map();
@@ -72,7 +72,7 @@ void Game::HandleEvents()
 		default:
 			if (event.type == SDL_KEYDOWN)
 			{
-				KIM->KeyInputEvent(player, keystates);
+				KIM->KeyInputEvent(player, keystates,map);
 			}
 			break;
 		}

@@ -59,8 +59,8 @@ void Map::DrawMap()
 		for (int j = 0; j < 25; j++)
 		{
 			tile = map[i][j];
-			dest.x = j * 32;
-			dest.y = i * 32;
+			dest.x = i * 32;
+			dest.y = j * 32;
 
 
 			switch (tile)
@@ -78,5 +78,22 @@ void Map::DrawMap()
 				break;
 			}
 		}
+	}
+}
+bool Map::CollisionQuery(int x,int y)
+{
+	cout << x << " " << y << endl;
+	cout << x / 32 << " " << y / 32 << " " << map[x / 32][y / 32] << endl;
+	if (x < 0 || y < 0)
+	{
+		return true;
+	}
+	else if (map[x / 32][y/ 32] == 2)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
