@@ -31,22 +31,24 @@ void Player::MoveDown()
 
 void Player::Update()
 {
-	srcRect.h = 26;
+	srcRect.h = 16;
 	srcRect.w = 16;
-	srcRect.y = 1;
+	srcRect.y = 0;
 	
+	/*
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
 		animationDelayer = SDL_GetTicks();
 		srcRect.x = Animator->downAnimationSelect();
 	}
+	*/
 	
-	//srcRect.x = 87;
+	srcRect.x = 0;
 
 	destRect.x = xpos;
 	destRect.y = ypos;
-	destRect.w = srcRect.w * 2;
-	destRect.h = srcRect.h * 2;
+	destRect.w = srcRect.w * 4;
+	destRect.h = srcRect.h * 4;
 }
 int Player::GetPosX()
 {

@@ -10,18 +10,16 @@ public:
 	Map();
 	~Map();
 
-	void LoadMap(int arr[20][25]);
+	void LoadMap(int arr[11][16]);
 	void DrawMap();
 	bool CollisionQuery(int x, int y);
 	
 private:
 	SDL_Rect src, dest;
 
-	SDL_Texture* dirt;
-	SDL_Texture* grass;
-	SDL_Texture* water;
+	SDL_Texture* Map_1 = NULL;
 
-	int map[20][25];
+	int map[11][16];
 
 };
 

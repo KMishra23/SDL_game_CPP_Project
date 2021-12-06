@@ -16,9 +16,9 @@ public:
 	void Render();
 
 protected:
-	int xpos = 0;
-	int ypos = 0;
-	int objectSizeScale = 4;
+	int xpos = 80;
+	int ypos = 80;
+	int objectSizeScale = 1;
 
 	SDL_Texture* objectTexture= NULL;
 	SDL_Rect srcRect, destRect;

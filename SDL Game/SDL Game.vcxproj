@@ -82,8 +82,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2_image-2.0.1\include;C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2_image-2.0.1\lib\x64;C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -131,13 +131,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2_image-2.0.1\include;C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2\include;C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\include;C:\Users\kaush\Desktop\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\include;C:\Users\kaush\Desktop\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2_image-2.0.1\lib\x64;C:\college_work\sem3\programming 2\cpp\project\CPP Project Git\Dev\SDL2\lib\x64;C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\lib\x64;C:\Users\kaush\Desktop\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\kaush\Downloads\Dev\Dev\SDL2_image-2.0.1\lib\x64;C:\Users\kaush\Desktop\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
