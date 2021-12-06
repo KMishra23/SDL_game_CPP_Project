@@ -15,8 +15,6 @@ public:
 	void MoveRight();
 	void MoveUp();
 	void MoveDown();
-	void Sprinting();
-	void Walking();
 	void Update();
 	int GetPosX();
 	int GetPosY();

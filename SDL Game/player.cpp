@@ -29,16 +29,6 @@ void Player::MoveDown()
 	ypos += speedMultiplier;
 }
 
-void Player::Sprinting()
-{
-	speedMultiplier = 24;
-}
-
-void Player::Walking()
-{
-	speedMultiplier = 16;
-}
-
 void Player::Update()
 {
 	srcRect.h = 26;
