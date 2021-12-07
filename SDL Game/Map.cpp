@@ -1,6 +1,6 @@
 #include "Map.h"
 #include "TextureManager.h"
-
+#include<math.h>
 int lvl1[11][16] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -51,18 +51,46 @@ void Map::DrawMap()
 }
 bool Map::CollisionQuery(int x,int y)
 {
-	cout << x << " " << y << endl;
-	cout << x / 64 << " " << y / 64 << " " << map[x / 64][y / 64] << endl;
-	if (x < 0 || y < 0)
+//	cout << x << " " << y << endl;
+	//cout << x / 64 << " " << y / 64 << " " << map[x / 64][y / 64] << endl;
+	//cout << x % 64 << " " << y % 64 << endl;
+	if (x % 64 == 1)
 	{
-		return true;
+		//cout << (x + 63)/64 << " " << (int)ceil((float)y/64) << ' ';
+		//cout << map[(int)ceil((float)y/64)][(x + 63) / 64] << endl;
+		if (map[(int)ceil((float)y / 64)][(x + 63) / 64] == 1 || map[(int)floor((float)y / 64)][(x + 63) / 64] == 1)
+		{
+			return true;
+		}
 	}
-	else if (map[x / 64][y/ 64] == 1)
+	else if (x % 64 == 63)
 	{
-		return true;
+		//cout << (x - 63)/64 << " " << (int)ceil((float)y/64)<< " ";
+		//cout << map[(int)ceil((float)y / 64)][(x-63) / 64] << endl;
+		if (map[(int)ceil((float)y / 64)][(x - 63) / 64] == 1 || map[(int)floor((float)y / 64)][(x - 63) / 64] == 1)
+		{
+			return true;
+		}
 	}
-	else
+	else if (y % 64 == 1)
 	{
+		//cout << (int)ceil((float)x/64) << " " << (y + 63)/64<< ' ';
+		//cout << map[(y +63) / 64][(int)ceil((float)(x) / 64)] << endl;;
+		if (map[(y+63) / 64][(int)ceil((float)(x) / 64)] == 1 || map[(y + 63) / 64][(int)floor((float)(x) / 64)] == 1)
+		{
+			return true;
+		}
+	}
+	else if (y % 64 == 63)
+	{
+		//cout << (int)ceil((float)x/64) << (y - 63)/64 << " ";
+		//cout << map[(y - 63) / 64][(int)ceil((float)(x) / 64)] << endl;;
+		if (map[(y - 63) / 64][(int)ceil((float)(x) / 64)] == 1 || map[(y - 63) / 64][(int)floor((float)(x) / 64)] == 1)
+		{
+			return true;
+		}
+	}
+	//cout << "collision nhi ho rha at " << x << " " << y << endl;
+
 		return false;
-	}
 }
