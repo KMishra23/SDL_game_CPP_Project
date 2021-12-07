@@ -20,7 +20,7 @@ public:
 	int GetPosY();
 
 private:
-	int speedMultiplier = 32;
+	int speedMultiplier = 8;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();

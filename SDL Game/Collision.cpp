@@ -2,24 +2,24 @@
 bool KeyboardManager::IscollidingWithWalls(int direction,int x,int y,Map* mymap)
 {
 
-	if (direction == 0 && mymap->CollisionQuery(x,y-32))
+	if (direction == 0 && mymap->CollisionQuery(x,y-1))
 	{
-		cout << "collision ho rha hai" << endl;
+		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 1 && mymap->CollisionQuery(x + 32, y))
+	else if (direction == 1 && mymap->CollisionQuery(x + 1, y))
 	{
-		cout << "collision ho rha hai" << endl;
+		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 2 && mymap->CollisionQuery(x, y +32))
+	else if (direction == 2 && mymap->CollisionQuery(x, y +1))
 	{
-		cout << "collision ho rha hai" << endl;
+		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 3 && mymap->CollisionQuery(x - 32, y))
+	else if (direction == 3 && mymap->CollisionQuery(x - 1, y))
 	{
-		cout << "collision ho rha hai" << endl;
+		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
 	return false;
