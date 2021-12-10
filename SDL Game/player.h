@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include"Map.h"
 #include "PlayerAnimationHandler.h"
-
+#include"Game.h"
 class Player : public GameObject
 {
 public:
@@ -19,7 +19,9 @@ public:
 	void Update();
 	int GetPosX();
 	int GetPosY();
-	bool IsCollidingWithWalls(int direction, Map* mymap);
+	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
+	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
+	void Set(int x, int y);
 
 private:
 	int speedMultiplier = 2;

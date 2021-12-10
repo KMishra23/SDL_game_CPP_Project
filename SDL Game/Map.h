@@ -7,12 +7,12 @@
 class Map
 {
 public:
-	Map();
+	Map(int num);
 	~Map();
 
-	void LoadMap(int arr[11][16]);
-	void DrawMap();
-	bool CollisionQuery(int x, int y);
+	void LoadMap(int num);
+	void DrawMap(int num);
+	int CollisionQuery(int x, int y,int CurrMapNumber);
 	
 private:
 	SDL_Rect src, dest;
@@ -21,6 +21,10 @@ private:
 	SDL_Texture* Map_2 = NULL;
 
 	int map[11][16];
+	int maps[2][4] = { {2,2,2,2},
+					   {1,1,1,1} 
+					 };
+	int count = 0;
 
 };
 

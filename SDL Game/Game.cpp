@@ -16,6 +16,7 @@ Game::~Game() {}
 void Game::Init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	int flag = 0;
+	map_number = 1;
 	if (fullscreen) flag = SDL_WINDOW_FULLSCREEN;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -45,7 +46,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player = new Player("Assets/Movement_Attack.png", 192, 128, 4);
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler();
 	player->assignAnimator(PlayerAnimator);
-	map = new Map();
+	map = new Map(1);
 	KIM = new KeyboardManager();
 }
 
@@ -70,13 +71,18 @@ void Game::HandleEvents()
 		default:
 			if (event.type == SDL_KEYDOWN)
 			{
-				KIM->KeyInputEvent(player, keystates,map);
+				map_number = KIM->KeyInputEvent(player, keystates, map,map_number);
 			}
 			break;
 		}
 
 	default:
 		break;
+	}
+	if (map_number != prev)
+	{
+		player->Set(256, 128);
+		prev = map_number;
 	}
 }
 
@@ -92,7 +98,8 @@ void Game::Update()
 void Game::Render() 
 {
 	SDL_RenderClear(renderer);
-	map->DrawMap();
+	map->DrawMap(map_number);
+	map->LoadMap(map_number);
 	player->Render();
 	SDL_RenderPresent(renderer);
 }
@@ -105,4 +112,3 @@ void Game::Clean()
 
 	cout << "Game Cleared" << endl;
 }
-

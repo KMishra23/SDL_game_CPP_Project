@@ -3,7 +3,11 @@
 
 Player::Player(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
 {}
-
+void Player::Set(int x, int y)
+{
+	xpos = x;
+	ypos = y;
+}
 void Player::assignAnimator(PlayerAnimationHandler* Animator)
 {
 	this->Animator = Animator;

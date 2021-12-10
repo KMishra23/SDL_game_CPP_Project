@@ -10,9 +10,8 @@ public:
 	KeyboardManager();
 	~KeyboardManager();
 
-	void KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap);
-	bool IscollidingWithWalls(int direction, int x, int y, Map* mymap);
-	
+	int KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap,int CurrentMapNumber);
+	//bool IscollidingWithWalls(int direction, int x, int y, Map* mymap);
 private:
 	SDL_Event event;
 	Uint32 delayUp = SDL_GetTicks();

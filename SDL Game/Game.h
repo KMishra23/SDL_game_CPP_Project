@@ -22,17 +22,20 @@ public:
 	void Render();
 	void Clean();
 	void KeyInManager();
-
+	 int getCurrMapNumber()
+	{
+		return map_number;
+	}
 	static SDL_Renderer* renderer;
-
 	bool Running()
 	{
 		return isRunning;
 	}
 	//bool IsCollidingWithEnemy(Player *player,);
-
 private:
 	int count = 0;
+	int map_number=1;
+	int prev=1;
 	bool isRunning;
 	SDL_Window* window;
 	SDL_Event event;
