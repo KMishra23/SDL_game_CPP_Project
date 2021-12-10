@@ -34,12 +34,14 @@ void KeyboardManager::KeyInputEvent(Player* player, const Uint8* keystates,Map* 
 		if (!IscollidingWithWalls(3, player->GetPosX(), player->GetPosY(),mymap))
 		player->MoveLeft();
 	}
+	/*
 	if (keystates[SDL_SCANCODE_LSHIFT])
 	{
-		delayUnit = 100;
+		delayUnit = 10;
 	}
-	if (!keystates[SDL_SCANCODE_LSHIFT])
+	else if (!keystates[SDL_SCANCODE_LSHIFT])
 	{
-		delayUnit = 200;
+		delayUnit = 20;
 	}
+	*/
 }

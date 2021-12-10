@@ -7,11 +7,11 @@ PlayerAnimationHandler::~PlayerAnimationHandler() {}
 
 void PlayerAnimationHandler::resetAnimations()
 {
-	downIterator = 1;
+	return;
 }
 
 int PlayerAnimationHandler::downAnimationSelect()
 {
 	//cout << downIterator + 1 << endl;
-	return mvDownX[downIterator++ % 6];
+	return mvDown[0];
 }

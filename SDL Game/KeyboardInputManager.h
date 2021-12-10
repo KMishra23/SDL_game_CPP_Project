@@ -19,7 +19,7 @@ private:
 	Uint32 delayDown = SDL_GetTicks();
 	Uint32 delayRight = SDL_GetTicks();
 	Uint32 delayLeft = SDL_GetTicks();
-	float delayUnit = 0.05;
+	float delayUnit = 10;
 };
 
 #endif
