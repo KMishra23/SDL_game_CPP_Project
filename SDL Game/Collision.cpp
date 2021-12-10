@@ -1,23 +1,23 @@
-#include"KeyboardInputManager.h"
-bool KeyboardManager::IscollidingWithWalls(int direction,int x,int y,Map* mymap)
+#include"player.h"
+bool Player::IsCollidingWithWalls(int direction,Map* mymap)
 {
-
-	if (direction == 0 && mymap->CollisionQuery(x,y-1))
+	
+	if (direction == 0 && mymap->CollisionQuery(GetPosX(), GetPosY() - 1))
 	{
 		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 1 && mymap->CollisionQuery(x + 1, y))
+	else if (direction == 1 && mymap->CollisionQuery(GetPosX() + 1, GetPosY()))
 	{
 		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 2 && mymap->CollisionQuery(x, y +1))
+	else if (direction == 2 && mymap->CollisionQuery(GetPosX(), GetPosY() +1))
 	{
 		//cout << "collision ho rha hai" << endl;
 		return true;
 	}
-	else if (direction == 3 && mymap->CollisionQuery(x - 1, y))
+	else if (direction == 3 && mymap->CollisionQuery(GetPosX() - 1, GetPosY()))
 	{
 		//cout << "collision ho rha hai" << endl;
 		return true;

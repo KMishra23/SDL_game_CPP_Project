@@ -12,14 +12,14 @@ public:
 
 	void KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap);
 	bool IscollidingWithWalls(int direction, int x, int y, Map* mymap);
-
+	
 private:
 	SDL_Event event;
 	Uint32 delayUp = SDL_GetTicks();
 	Uint32 delayDown = SDL_GetTicks();
 	Uint32 delayRight = SDL_GetTicks();
 	Uint32 delayLeft = SDL_GetTicks();
-	float delayUnit = 0.05;
+	int delayUnit = 1;
 };
 
 #endif

@@ -8,7 +8,6 @@
 Player* player;
 Map* map;
 KeyboardManager* KIM;
-
 SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}

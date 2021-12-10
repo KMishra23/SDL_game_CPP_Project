@@ -29,6 +29,7 @@ public:
 	{
 		return isRunning;
 	}
+	//bool IsCollidingWithEnemy(Player *player,);
 
 private:
 	int count = 0;
