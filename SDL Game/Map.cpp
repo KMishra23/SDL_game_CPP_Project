@@ -3,15 +3,15 @@
 #include<math.h>
 int lvl1[11][16] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1},
 	{1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
 	{1,1,0,0,1,0,0,0,0,0,0,1,0,0,1,1},
 	{1,1,0,0,0,1,1,1,1,1,1,0,0,0,1,1},
-	{1,1,0,0,0,1,1,1,1,1,1,0,0,0,1,1},
+	{1,2,0,0,0,1,1,1,1,1,1,0,0,0,2,1},
 	{1,1,0,0,0,1,1,1,1,1,1,0,0,0,1,1},
 	{1,1,0,0,1,0,0,0,0,0,0,1,0,0,1,1},
 	{1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1},
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
@@ -97,15 +97,26 @@ bool Map::CollisionQuery(int x,int y)
 	{
 		//cout << (x + 63)/64 << " " << (int)ceil((float)y/64) << ' ';
 		//cout << map[(int)ceil((float)y/64)][(x + 63) / 64] << endl;
+		if (map[(int)ceil((float)y / 64)][(x + 63) / 64] == 2 || map[(int)floor((float)y / 64)][(x + 63) / 64] == 2)
+		{
+			LoadMap(lvl2);
+			return false;
+		}
 		if (map[(int)ceil((float)y / 64)][(x + 63) / 64] == 1 || map[(int)floor((float)y / 64)][(x + 63) / 64] == 1)
 		{
 			return true;
 		}
 	}
 	else if (x % 64 == 63)
+
 	{
 		//cout << (x - 63)/64 << " " << (int)ceil((float)y/64)<< " ";
 		//cout << map[(int)ceil((float)y / 64)][(x-63) / 64] << endl;
+		if (map[(int)ceil((float)y / 64)][(x - 63) / 64] == 2 || map[(int)floor((float)y / 64)][(x - 63) / 64] == 2)
+		{
+			LoadMap(lvl2);
+			return false;
+		}
 		if (map[(int)ceil((float)y / 64)][(x - 63) / 64] == 1 || map[(int)floor((float)y / 64)][(x - 63) / 64] == 1)
 		{
 			return true;
@@ -115,6 +126,11 @@ bool Map::CollisionQuery(int x,int y)
 	{
 		//cout << (int)ceil((float)x/64) << " " << (y + 63)/64<< ' ';
 		//cout << map[(y +63) / 64][(int)ceil((float)(x) / 64)] << endl;;
+		if (map[(y + 63) / 64][(int)ceil((float)(x) / 64)] == 2 || map[(y + 63) / 64][(int)floor((float)(x) / 64)] == 2)
+		{
+			LoadMap(lvl2);
+			return false;
+		}
 		if (map[(y+63) / 64][(int)ceil((float)(x) / 64)] == 1 || map[(y + 63) / 64][(int)floor((float)(x) / 64)] == 1)
 		{
 			return true;
@@ -124,10 +140,16 @@ bool Map::CollisionQuery(int x,int y)
 	{
 		//cout << (int)ceil((float)x/64) << (y - 63)/64 << " ";
 		//cout << map[(y - 63) / 64][(int)ceil((float)(x) / 64)] << endl;;
+		if (map[(y - 63) / 64][(int)ceil((float)(x) / 64)] == 2 || map[(y - 63) / 64][(int)floor((float)(x) / 64)] == 2)
+		{
+			LoadMap(lvl2);
+			return false;
+		}
 		if (map[(y - 63) / 64][(int)ceil((float)(x) / 64)] == 1 || map[(y - 63) / 64][(int)floor((float)(x) / 64)] == 1)
 		{
 			return true;
 		}
+
 	}
 	//cout << "collision nhi ho rha at " << x << " " << y << endl;
 
