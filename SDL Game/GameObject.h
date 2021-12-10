@@ -22,8 +22,7 @@ protected:
 
 	SDL_Texture* objectTexture= NULL;
 	SDL_Rect srcRect, destRect;
-	
-	//SDL_Renderer* renderer;
+
 };
 
 #endif

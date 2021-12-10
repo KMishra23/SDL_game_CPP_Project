@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Enemy1.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="KeyboardInputManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy1.h" />
     <ClInclude Include="PlayerAnimationHandler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

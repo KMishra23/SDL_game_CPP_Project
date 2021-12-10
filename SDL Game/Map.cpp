@@ -15,15 +15,34 @@ int lvl1[11][16] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
+int lvl2[11][16] = {
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1},
+	{1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1},
+	{1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1},
+	{1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1},
+	{1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
+
 Map::Map()
 {
 	Map_1 = TextureManager::LoadTexture("Assets/Map/Map_1.png");
+	Map_2 = TextureManager::LoadTexture("Assets/Map/Map_2.png");
 	if (Map_1 == NULL)
 	{
 		cout << "Map_1 not loaded" << endl;
 	}
+	if (Map_2 == NULL)
+	{
+		cout << "Map_2 not loaded" << endl;
+	}
 
-	LoadMap(lvl1);
+	LoadMap(lvl2);
 
 	src.x = src.y = 0;
 	src.w = 256;
@@ -47,11 +66,12 @@ void Map::LoadMap(int arr[11][16])
 
 void Map::DrawMap()
 {
-	TextureManager::Draw(Map_1, src, dest);
+	TextureManager::Draw(Map_2, src, dest);
 }
+
 bool Map::CollisionQuery(int x,int y)
 {
-//	cout << x << " " << y << endl;
+	//cout << x << " " << y << endl;
 	//cout << x / 64 << " " << y / 64 << " " << map[x / 64][y / 64] << endl;
 	//cout << x % 64 << " " << y % 64 << endl;
 	if (x % 64 == 1)
