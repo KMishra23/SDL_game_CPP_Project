@@ -43,7 +43,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new Player("Assets/Movement_Attack.png", 192, 128, 4);
+	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler();
 	player->assignAnimator(PlayerAnimator);
 	map = new Map();

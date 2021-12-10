@@ -19,6 +19,7 @@ private:
 
 	SDL_Texture* Map_1 = NULL;
 	SDL_Texture* Map_2 = NULL;
+	SDL_Texture* Map_3 = NULL;
 
 	int map[11][16];
 
