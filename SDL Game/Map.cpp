@@ -43,7 +43,7 @@ int lvl3[11][16] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
 
-Map::Map()
+Map::Map(int num)
 {
 	Map_1 = TextureManager::LoadTexture("Assets/Map/Map_1.png");
 	Map_2 = TextureManager::LoadTexture("Assets/Map/Map_2.png");
@@ -61,7 +61,7 @@ Map::Map()
 		cout << "Map_3 not loaded" << endl;
 	}
 
-	LoadMap(lvl3);
+	LoadMap(3);
 
 	src.x = src.y = 0;
 	src.w = 256;
@@ -93,6 +93,15 @@ void Map::LoadMap(int num)
 			for (int j = 0; j < 16; j++)
 			{
 				arr[i][j] = lvl2[i][j];
+			}
+		}
+	}
+	else if (num == 3) {
+		for (int i = 0; i < 11; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+				arr[i][j] = lvl3[i][j];
 			}
 		}
 	}

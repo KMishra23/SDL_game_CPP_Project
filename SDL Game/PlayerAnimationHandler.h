@@ -7,14 +7,14 @@
 class PlayerAnimationHandler
 {
 public:
-	PlayerAnimationHandler();
+	PlayerAnimationHandler(const char* textureSheet);
 	~PlayerAnimationHandler();
 
 	void resetAnimations();
-	int downAnimationSelect();
-	int upAnimationSelect();
-	int rightAnimationSelect();
-	int leftAnimationSelect();
+	int* downAnimationSelect();
+	int* upAnimationSelect();
+	int* rightAnimationSelect();
+	int* leftAnimationSelect();
 	
 	int downAttack();
 	int upAttack();

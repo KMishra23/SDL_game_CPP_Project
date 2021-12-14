@@ -1,8 +1,15 @@
 #include "PlayerAnimationHandler.h"
 #include "player.h"
 #include "Game.h"
+#include "TextureManager.h"
 
-PlayerAnimationHandler::PlayerAnimationHandler() {}
+PlayerAnimationHandler::PlayerAnimationHandler(const char* textureSheet) {
+	baseTexture = TextureManager::LoadTexture(textureSheet);
+	if (baseTexture == NULL)
+	{
+		cout << "Player texture not loaded" << endl;
+	}
+}
 PlayerAnimationHandler::~PlayerAnimationHandler() {}
 
 void PlayerAnimationHandler::resetAnimations()
@@ -10,8 +17,26 @@ void PlayerAnimationHandler::resetAnimations()
 	return;
 }
 
-int PlayerAnimationHandler::downAnimationSelect()
+int* PlayerAnimationHandler::downAnimationSelect()
 {
 	//cout << downIterator + 1 << endl;
-	return mvDown[0];
+	return mvDown;
+}
+
+int* PlayerAnimationHandler::upAnimationSelect()
+{
+	//cout << downIterator + 1 << endl;
+	return mvUp;
+}
+
+int* PlayerAnimationHandler::leftAnimationSelect()
+{
+	//cout << downIterator + 1 << endl;
+	return mvLeft;
+}
+
+int* PlayerAnimationHandler::rightAnimationSelect()
+{
+	//cout << downIterator + 1 << endl;
+	return mvRight;
 }
