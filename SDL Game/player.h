@@ -25,6 +25,7 @@ public:
 
 private:
 	int speedMultiplier = 2;
+	int animatorCount = 0;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();
