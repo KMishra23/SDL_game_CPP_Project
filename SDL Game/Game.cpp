@@ -81,7 +81,22 @@ void Game::HandleEvents()
 	}
 	if (map_number != prev)
 	{
-		player->Set(256, 128);
+		if (player->GetPosX() <= 128)
+		{
+			player->Set(1024 - 64 * 3, 256+64);
+		}
+		else if (player->GetPosX() >= 14 * 64)
+		{
+			player->Set(128, 256+64);
+		}
+		else if (player->GetPosY() <= 128)
+		{
+			player->Set(512 - 32, 704 - 3 * 64);
+		}
+		else
+		{
+			player->Set(512 - 32, 128);
+		}
 		prev = map_number;
 	}
 }

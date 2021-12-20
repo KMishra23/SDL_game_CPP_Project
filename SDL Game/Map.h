@@ -22,8 +22,9 @@ private:
 	SDL_Texture* Map_3 = NULL;
 
 	int map[11][16];
-	int maps[2][4] = { {2,2,2,2},
-					   {1,1,1,1} 
+	int maps[3][4] = { {2,3,2,3},
+					   {1,3,3,1},
+						{2,1,1,1}
 					 };
 	int count = 0;
 

@@ -30,20 +30,20 @@ int lvl2[11][16] = {
 };
 
 int lvl3[11][16] = {
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1},
 	{1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1},
 	{1,1,0,0,0,0,1,1,0,0,0,0,1,1,1,1},
-	{1,1,0,1,1,1,1,1,1,1,1,0,1,0,1,1},
-	{1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
-	{1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1},
-	{1,1,1,1,0,0,0,0,1,1,1,0,0,0,1,1},
-	{1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	{2,0,0,1,1,1,1,1,1,1,1,0,1,0,0,1},
+	{2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+	{2,0,0,1,0,1,1,1,1,1,1,1,1,0,0,2},
+	{1,1,1,1,0,0,0,0,0,1,1,0,0,0,1,1},
+	{1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,0,1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1}
 };
 
-Map::Map()
+Map::Map(int num)
 {
 	Map_1 = TextureManager::LoadTexture("Assets/Map/Map_1.png");
 	Map_2 = TextureManager::LoadTexture("Assets/Map/Map_2.png");
@@ -61,7 +61,7 @@ Map::Map()
 		cout << "Map_3 not loaded" << endl;
 	}
 
-	LoadMap(lvl3);
+	LoadMap(num);
 
 	src.x = src.y = 0;
 	src.w = 256;
@@ -96,6 +96,16 @@ void Map::LoadMap(int num)
 			}
 		}
 	}
+	else if(num==3)
+	{ 
+		for (int i = 0; i < 11; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+				arr[i][j] = lvl3[i][j];
+			}
+		}
+	}
 	for (int i = 0; i < 11; i++)
 	{
 		for (int j = 0; j < 16; j++)
@@ -107,7 +117,12 @@ void Map::LoadMap(int num)
 
 void Map::DrawMap(int num)
 {
-	TextureManager::Draw(Map_3, src, dest);
+	if(num==1)
+	TextureManager::Draw(Map_1, src, dest);
+	else if(num==2)
+		TextureManager::Draw(Map_2, src, dest);
+	else if(num==3)
+		TextureManager::Draw(Map_3, src, dest);
 }
 
 int Map::CollisionQuery(int x,int y,int CurrMapNumber)
