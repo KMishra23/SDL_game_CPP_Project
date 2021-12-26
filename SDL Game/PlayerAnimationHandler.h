@@ -16,10 +16,10 @@ public:
 	int* rightAnimationSelect();
 	int* leftAnimationSelect();
 	
-	int downAttack();
-	int upAttack();
-	int rightAttack();
-	int leftAttack();
+	int* downAttack();
+	int* upAttack();
+	int* rightAttack();
+	int* leftAttack();
 
 private:
 	SDL_Texture* baseTexture = NULL;
@@ -28,10 +28,10 @@ private:
 	int mvRight[4] = { 34, 0, 51, 0 };
 	int mvLeft[4] = { 107, 0, 124, 0 };
 
-	int atkDown[4] = {};
-	int atkUp[4] = {};
-	int atkRight[4] = {};
-	int atkLeft[4] = {};
+	int atkDown[8] = {0, 16, 17, 16, 35, 16, 52, 16};
+	int atkUp[8] = { 0, 59, 17, 59, 35, 59, 52, 59 };
+	int atkRight[8] = {};
+	int atkLeft[8] = {};
 };
 
 #endif

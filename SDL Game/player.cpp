@@ -16,8 +16,11 @@ void Player::assignAnimator(PlayerAnimationHandler* Animator)
 void Player::MoveLeft()
 {
 	xpos -= speedMultiplier;
+	direction = 2;
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
+		srcRect.h = 16;
+		srcRect.w = 16;
 		animationDelayer = SDL_GetTicks();
 		srcRect.x = Animator->leftAnimationSelect()[animatorCount];
 		srcRect.y = Animator->leftAnimationSelect()[animatorCount + 1];
@@ -32,8 +35,11 @@ void Player::MoveLeft()
 void Player::MoveRight()
 {
 	xpos += speedMultiplier;
+	direction = 3;
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
+		srcRect.h = 16;
+		srcRect.w = 16;
 		animationDelayer = SDL_GetTicks();
 		srcRect.x = Animator->rightAnimationSelect()[animatorCount];
 		srcRect.y = Animator->rightAnimationSelect()[animatorCount + 1];
@@ -47,8 +53,11 @@ void Player::MoveRight()
 void Player::MoveUp()
 {
 	ypos -= speedMultiplier;
+	direction = 0;
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
+		srcRect.h = 16;
+		srcRect.w = 16;
 		animationDelayer = SDL_GetTicks();
 		srcRect.x = Animator->upAnimationSelect()[animatorCount];
 		srcRect.y = Animator->upAnimationSelect()[animatorCount + 1];
@@ -62,8 +71,11 @@ void Player::MoveUp()
 void Player::MoveDown()
 {
 	ypos += speedMultiplier;
+	direction = 1;
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
+		srcRect.h = 16;
+		srcRect.w = 16;
 		animationDelayer = SDL_GetTicks();
 		srcRect.x = Animator->downAnimationSelect()[animatorCount];
 		srcRect.y = Animator->downAnimationSelect()[animatorCount + 1];
@@ -74,10 +86,50 @@ void Player::MoveDown()
 	}
 }
 
+void Player::AttackUp()
+{
+	if (SDL_GetTicks() - animationDelayer > 300)
+	{
+		srcRect.w = 16;
+		srcRect.h = 27;
+		animationDelayer = SDL_GetTicks();
+		srcRect.x = Animator->upAttack()[animatorCount];
+		srcRect.y = Animator->upAttack()[animatorCount + 1];
+		animatorCount += 2;
+		if (animatorCount > 6) {
+			animatorCount = 0;
+		}
+	}
+}
+
+void Player::AttackDown()
+{
+	if (SDL_GetTicks() - animationDelayer > 300)
+	{
+		srcRect.w = 16;
+		srcRect.h = 27;
+		animationDelayer = SDL_GetTicks();
+		srcRect.x = Animator->downAttack()[animatorCount];
+		srcRect.y = Animator->downAttack()[animatorCount + 1];
+		animatorCount += 2;
+		if (animatorCount > 6) {
+			animatorCount = 0;
+		}
+	}
+}
+
+void Player::AttackLeft()
+{
+
+}
+
+void Player::AttackRight()
+{
+
+}
+
 void Player::Update()
 {
-	srcRect.h = 16;
-	srcRect.w = 16;
 	//srcRect.y = 0;
 	
 	/*
@@ -102,4 +154,8 @@ int Player::GetPosX()
 int Player::GetPosY()
 {
 	return ypos;
+}
+int Player::getDirection()
+{
+	return direction;
 }

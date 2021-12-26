@@ -16,9 +16,14 @@ public:
 	void MoveRight();
 	void MoveUp();
 	void MoveDown();
+	void AttackUp();
+	void AttackDown();
+	void AttackLeft();
+	void AttackRight();
 	void Update();
 	int GetPosX();
 	int GetPosY();
+	int getDirection();
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
@@ -26,6 +31,7 @@ public:
 private:
 	int speedMultiplier = 2;
 	int animatorCount = 0;
+	int direction = 0;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();

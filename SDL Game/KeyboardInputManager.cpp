@@ -37,5 +37,25 @@ int KeyboardManager::KeyInputEvent(Player* player, const Uint8* keystates,Map* m
 		player->MoveLeft();
 		return player->IsChangingMap(3, mymap,CurrentMapNumber);
 	}
+	if ((keystates[SDL_SCANCODE_SPACE]) && player->getDirection() == 0 && SDL_GetTicks() - delayLeft > delayUnit) {
+		delayLeft = SDL_GetTicks();
+		if (!player->IsCollidingWithWalls(0, mymap, CurrentMapNumber))
+			player->AttackUp();
+	}
+	if ((keystates[SDL_SCANCODE_SPACE]) && player->getDirection() == 1 && SDL_GetTicks() - delayLeft > delayUnit) {
+		delayLeft = SDL_GetTicks();
+		if (!player->IsCollidingWithWalls(2, mymap, CurrentMapNumber))
+			player->AttackDown();
+	}
+	if ((keystates[SDL_SCANCODE_SPACE]) && player->getDirection() == 2 && SDL_GetTicks() - delayLeft > delayUnit) {
+		delayLeft = SDL_GetTicks();
+		if (!player->IsCollidingWithWalls(1, mymap, CurrentMapNumber))
+			player->AttackLeft();
+	}
+	if ((keystates[SDL_SCANCODE_SPACE]) && player->getDirection() == 3 && SDL_GetTicks() - delayLeft > delayUnit) {
+		delayLeft = SDL_GetTicks();
+		if (!player->IsCollidingWithWalls(3, mymap, CurrentMapNumber))
+			player->AttackRight();
+	}
 	return CurrentMapNumber;
 }

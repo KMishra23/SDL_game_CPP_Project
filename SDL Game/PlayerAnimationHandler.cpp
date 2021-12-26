@@ -40,3 +40,21 @@ int* PlayerAnimationHandler::rightAnimationSelect()
 	//cout << downIterator + 1 << endl;
 	return mvRight;
 }
+
+int* PlayerAnimationHandler::upAttack()
+{
+	return atkUp;
+}
+
+int* PlayerAnimationHandler::downAttack()
+{
+	return atkDown;
+}
+int* PlayerAnimationHandler::leftAttack()
+{
+	return atkLeft;
+}
+int* PlayerAnimationHandler::rightAttack()
+{
+	return atkRight;
+}
