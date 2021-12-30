@@ -1,0 +1,10 @@
+Hearts for Health System: 8x8:
+Full: (64,39)
+Half: (73,39)
+Empty: (82,39)
+
+Heart Collectible (collect to gain health): 16x16
+(44,39)
+
+1 Coin 8x16: (19,39)
+5 Coin 8x16: (30,39)

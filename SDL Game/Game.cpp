@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "player.h"
 #include "KeyboardInputManager.h"
+#include "Enemy1.h"
 
 Player* player;
 Map* map;
@@ -44,6 +45,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
+	Enemy1 *testEnemy = new Enemy1("Assets/Enemies.png", 240,240, 4, 0);
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
 	map = new Map(1);

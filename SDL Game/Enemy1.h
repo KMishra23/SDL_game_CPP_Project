@@ -7,11 +7,22 @@
 class Enemy1 : public GameObject
 {
 public:
-	Enemy1(const char* textureSheet, int x, int y, int scale);
+	Enemy1(const char* textureSheet, int x, int y, int scale, int mapNum);
 	~Enemy1();
+	int GetPosX() { return xpos; }
+	int GetPosY() { return ypos; }
+	int GetDirection() { return direction; }
+
+	void MoveRight();
+	void MoveLeft();
+	void MoveUp();
+	void MoveDown();
 
 private:
-	
+	int direction = 0;
+	int spawnX;
+	int spawnY;
+	int mapNumber;
 };
 
 #endif // !Enemy1_HEADER
