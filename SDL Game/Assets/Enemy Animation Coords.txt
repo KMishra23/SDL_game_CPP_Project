@@ -1,0 +1,13 @@
+Shooter Coords: 16x16
+Down Animation : (1,11), (18,11)
+Left Animation : (35,11), (52,11)
+Right Animation : (79,11), (96,11)
+Up Animation : (113,11), (130,11)
+
+Bullet Coords: 8x16 : (69,11) 
+
+Patrol Enemy Coords: 16x16
+Down Animation : (69,58), (90,58)
+Up Animation : (107,58), (52,58)
+Right Animation : (124,58), (141,58)
+Left Animation : (18,58), (35,58) 
