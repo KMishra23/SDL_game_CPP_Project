@@ -147,7 +147,7 @@ void Player::Update()
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
 
-	player_health->Update_Meter();
+	//player_health->Update_Meter();
 
 }
 int Player::GetPosX()

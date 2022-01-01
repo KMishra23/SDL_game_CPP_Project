@@ -29,9 +29,9 @@ public:
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
-	void renderHearts();
-	void Damage_1();
-	void Regenerate_1();
+	//void renderHearts();
+	//void Damage_1();
+	//void Regenerate_1();
 
 private:
 	int speedMultiplier = 2;
