@@ -5,8 +5,10 @@
 #include "player.h"
 #include "KeyboardInputManager.h"
 #include "Enemy1.h"
+#include "Enemy.h"
 
 Player* player;
+Enemy* enemy1;
 Map* map;
 KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
@@ -45,7 +47,8 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
-	Enemy1 *testEnemy = new Enemy1("Assets/Enemies.png", 240,240, 4, 0);
+	enemy1 = new Enemy("Assets/Enemies.png", 1024 - 192, 256, 4, 1);
+	
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
 	map = new Map(1);
@@ -89,7 +92,7 @@ void Game::HandleEvents()
 		default:
 			if (event.type == SDL_KEYDOWN)
 			{
-				map_number = KIM->KeyInputEvent(player, keystates, map,map_number);
+				map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number);
 			}
 			break;
 		}
@@ -97,23 +100,34 @@ void Game::HandleEvents()
 	default:
 		break;
 	}
+	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
+		cout << "boom" << endl;
+	}
+
 	if (map_number != prev)
 	{
 		if (player->GetPosX() <= 128)
 		{
+			//map3
 			player->Set(1024 - 64 * 3, 256+64);
+			enemy1->SetPos(128+64, 64*5, 2);
 		}
 		else if (player->GetPosX() >= 14 * 64)
 		{
+			//map1
 			player->Set(128, 256+64);
+			enemy1->SetPos(1024 - 192, 256, 1);
 		}
 		else if (player->GetPosY() <= 128)
 		{
+			//map2
 			player->Set(512 - 32, 704 - 3 * 64);
+			enemy1->SetPos(128+64, 64*3, 2);
 		}
 		else
 		{
 			player->Set(512 - 32, 128);
+			enemy1->SetPos(192, 256, 1);
 		}
 		prev = map_number;
 	}
@@ -124,6 +138,7 @@ void Game::Update()
 	//count++;
 
 	player->Update();
+	enemy1->Update();
 
 	//cout << count << endl;
 }
@@ -135,13 +150,14 @@ void Game::Render()
 	map->DrawMap(map_number);
 	map->LoadMap(map_number);
 	player->Render();
+	enemy1->Render();
 	SDL_RenderPresent(renderer);
 }
 
 void Game::Clean() 
 {
 	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);	
+	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
 
 	cout << "Game Cleared" << endl;

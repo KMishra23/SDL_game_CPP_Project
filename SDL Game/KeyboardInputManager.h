@@ -4,13 +4,14 @@
 
 #include "player.h"
 #include"Map.h"
+#include "Enemy.h"
 class KeyboardManager
 {
 public:
 	KeyboardManager();
 	~KeyboardManager();
 
-	int KeyInputEvent(Player* player, const Uint8 *keystates,Map* mymap,int CurrentMapNumber);
+	int KeyInputEvent(Player* player, Enemy* enemy, const Uint8 *keystates,Map* mymap,int CurrentMapNumber);
 	//bool IscollidingWithWalls(int direction, int x, int y, Map* mymap);
 private:
 	SDL_Event event;

@@ -46,7 +46,7 @@ int Player::IsChangingMap(int direction, Map* mymap, int CurrMapNumber)
 }
 bool Player::IsCollidingWithBullet(int BulletX,int BulletY)
 {
-	if (BulletX-GetPosX() ==64 && (BulletY>=GetPosY()-32 && BulletY<=GetPosY()+64 ))
+	if (BulletX - GetPosX() == 64 && (BulletY >= GetPosY() - 32 && BulletY <= GetPosY() + 64))
 	{
 		return true;
 	}

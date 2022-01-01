@@ -8,6 +8,7 @@ void Player::Set(int x, int y)
 	xpos = x;
 	ypos = y;
 }
+
 void Player::assignAnimator(PlayerAnimationHandler* Animator)
 {
 	this->Animator = Animator;
