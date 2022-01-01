@@ -40,7 +40,6 @@ private:
 	int direction = 0;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
-	bool attackupflag = false;
 	Uint32 animationDelayer = SDL_GetTicks();
 	//Health *player_health = new Health(max_health);
 };
