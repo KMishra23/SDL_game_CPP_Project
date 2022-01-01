@@ -131,7 +131,7 @@ void Game::Update()
 void Game::Render() 
 {
 	SDL_RenderClear(renderer);
-	player->renderHearts();
+	//player->renderHearts();
 	map->DrawMap(map_number);
 	map->LoadMap(map_number);
 	player->Render();

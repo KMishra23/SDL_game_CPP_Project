@@ -60,11 +60,11 @@ int KeyboardManager::KeyInputEvent(Player* player, const Uint8* keystates,Map* m
 	}
 	if (keystates[SDL_SCANCODE_Q])
 	{
-		player->Damage_1();
+		//player->Damage_1();
 	}
 	if (keystates[SDL_SCANCODE_E])
 	{
-		player->Regenerate_1();
+		//player->Regenerate_1();
 	}
 	return CurrentMapNumber;
 }
