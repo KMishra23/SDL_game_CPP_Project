@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 
 	game = new Game();
 
-	game->Init("Korok Dungeon Alpha 1.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, false);
+	game->Init("Korok Dungeon Alpha 3.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, false);
 
 	while (game->Running())
 	{
@@ -35,7 +35,6 @@ int main(int argc, char* argv[])
 		{
 			SDL_Delay(frameDelay - frameTime);
 		}
-		
 	}
 
 	game->Clean();

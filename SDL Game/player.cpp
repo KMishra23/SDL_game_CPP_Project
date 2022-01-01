@@ -2,7 +2,9 @@
 #include "Game.h"
 
 Player::Player(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
-{}
+{
+	health = new Health(5);
+}
 void Player::Set(int x, int y)
 {
 	xpos = x;
@@ -178,3 +180,4 @@ void Player::Regenerate_1()
 	player_health->Increase_1();
 }
 */
+

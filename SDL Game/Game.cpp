@@ -5,11 +5,13 @@
 #include "player.h"
 #include "KeyboardInputManager.h"
 #include "Enemy1.h"
+#include "Health.h"
 
 Player* player;
 Map* map;
 KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
+Health* temporary;
 
 Game::Game() {}
 Game::~Game() {}
@@ -44,6 +46,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
+	//temporary = new Health(5);
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
 	Enemy1 *testEnemy = new Enemy1("Assets/Enemies.png", 240,240, 4, 0);
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");

@@ -22,7 +22,7 @@ public:
 private:
 	int health_points = 0;
 	int max_health = 0;
-	vector<bool> hearts;
+	vector<int> hearts;
 
 	SDL_Texture* hearts_sheet;
 	SDL_Rect full_heart_src, half_heart_src, empty_heart_src;
@@ -32,6 +32,5 @@ private:
 	int xReset = 32;
 	int ypos = 736;
 };
-
 
 #endif

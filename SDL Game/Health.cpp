@@ -5,11 +5,12 @@ Health::Health(int init_val)
 {
 	health_points = init_val;
 	max_health = init_val;
+	
 	for (int i = 0; i < init_val; i++)
 	{
 		hearts.push_back(1);
 	}
-
+	
 	hearts_sheet = TextureManager::LoadTexture("Assets/Hearts.png");
 	if (hearts_sheet == NULL) cout << "Hearts not loaded" << endl;
 
@@ -33,6 +34,9 @@ Health::Health(int init_val)
 	destRect.x = xpos;
 	destRect.y = ypos;
 }
+
+Health::~Health()
+{}
 
 void Health::Decrease_1()
 {

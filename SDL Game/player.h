@@ -5,7 +5,7 @@
 #include"Map.h"
 #include "PlayerAnimationHandler.h"
 #include"Game.h"
-//#include "Health.h"
+#include "Health.h"
 
 class Player : public GameObject
 {
@@ -41,7 +41,7 @@ private:
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();
-	//Health *player_health = new Health(max_health);
+	Health* health;
 };
 
 #endif
