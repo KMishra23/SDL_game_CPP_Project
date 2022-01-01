@@ -3,7 +3,7 @@
 #include "GameObject.h"
 
 const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 704;
+const int SCREEN_HEIGHT = 804; //704 tak main screen hai
 Game* game = nullptr;
 
 

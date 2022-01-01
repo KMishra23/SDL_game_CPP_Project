@@ -17,6 +17,7 @@ public:
 	//bool IsCollidingWithWalls(int direction, Map* mymap, int CurrMapNumber);
 private:
 	int direction;
+	int mapNumber;
 };
 
 #endif

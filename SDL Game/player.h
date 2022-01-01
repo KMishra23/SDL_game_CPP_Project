@@ -5,6 +5,8 @@
 #include"Map.h"
 #include "PlayerAnimationHandler.h"
 #include"Game.h"
+//#include "Health.h"
+
 class Player : public GameObject
 {
 public:
@@ -27,14 +29,19 @@ public:
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
+	void renderHearts();
+	void Damage_1();
+	void Regenerate_1();
 
 private:
 	int speedMultiplier = 2;
+	int max_health = 5;
 	int animatorCount = 0;
 	int direction = 0;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();
+	//Health *player_health = new Health(max_health);
 };
 
 #endif

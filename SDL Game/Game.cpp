@@ -50,6 +50,22 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player->assignAnimator(PlayerAnimator);
 	map = new Map(1);
 	KIM = new KeyboardManager();
+
+	/*
+	SDL_Surface* black = IMG_Load("Assets/Black.png");
+	SDL_Texture* black_surface = SDL_CreateTextureFromSurface(renderer, black);
+	SDL_FreeSurface(black);
+	SDL_Rect blk_src, blk_dest;
+	blk_dest.x = 0;
+	blk_dest.y = 704;
+	blk_dest.w = 1024;
+	blk_dest.h = 100;
+	blk_src.x = 0;
+	blk_src.y = 0;
+	blk_src.w = 1024;
+	blk_src.h = 100;
+	SDL_RenderCopy(renderer, black_surface, &blk_src, &blk_dest);
+	*/
 }
 
 void Game::HandleEvents()
@@ -115,6 +131,7 @@ void Game::Update()
 void Game::Render() 
 {
 	SDL_RenderClear(renderer);
+	player->renderHearts();
 	map->DrawMap(map_number);
 	map->LoadMap(map_number);
 	player->Render();

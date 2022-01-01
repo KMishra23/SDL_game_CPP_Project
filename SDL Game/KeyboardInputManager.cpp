@@ -58,5 +58,13 @@ int KeyboardManager::KeyInputEvent(Player* player, const Uint8* keystates,Map* m
 		if (!player->IsCollidingWithWalls(3, mymap, CurrentMapNumber))
 			player->AttackRight();
 	}
+	if (keystates[SDL_SCANCODE_Q])
+	{
+		player->Damage_1();
+	}
+	if (keystates[SDL_SCANCODE_E])
+	{
+		player->Regenerate_1();
+	}
 	return CurrentMapNumber;
 }

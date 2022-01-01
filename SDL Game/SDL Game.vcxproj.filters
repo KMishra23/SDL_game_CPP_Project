@@ -45,6 +45,12 @@
     <ClCompile Include="Enemy1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -69,6 +75,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy1.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

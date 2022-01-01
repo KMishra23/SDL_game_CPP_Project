@@ -3,7 +3,7 @@
 
 Enemy::Enemy(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
 {
-	this->mapNumber = mapNum;
+	//this->mapNumber = mapNum;
 	direction = 1; //1=moving down, -1=moving up
 }
 

@@ -146,6 +146,9 @@ void Player::Update()
 	destRect.y = ypos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+
+	player_health->Update_Meter();
+
 }
 int Player::GetPosX()
 {
@@ -159,3 +162,19 @@ int Player::getDirection()
 {
 	return direction;
 }
+/*
+void Player::renderHearts()
+{
+	player_health->Render();
+}
+
+void Player::Damage_1()
+{
+	player_health->Decrease_1();
+}
+
+void Player::Regenerate_1()
+{
+	player_health->Increase_1();
+}
+*/
