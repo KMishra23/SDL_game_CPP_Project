@@ -88,6 +88,7 @@ void Player::MoveDown()
 
 void Player::AttackUp()
 {
+	attackupflag = true;
 	if (SDL_GetTicks() - animationDelayer > 300)
 	{
 		srcRect.w = 16;
@@ -141,13 +142,16 @@ void Player::Update()
 	*/
 	
 	//srcRect.x = 0;
+	if (attackupflag == true) {
+		destRect.y = ypos - 8;
+	}
 
 	destRect.x = xpos;
 	destRect.y = ypos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
 
-	player_health->Update_Meter();
+	//player_health->Update_Meter();
 
 }
 int Player::GetPosX()

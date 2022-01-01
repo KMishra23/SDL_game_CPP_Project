@@ -31,9 +31,9 @@ public:
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
-	void renderHearts();
-	void Damage_1();
-	void Regenerate_1();
+	//void renderHearts();
+	//void Damage_1();
+	//void Regenerate_1();
 
 private:
 	int speedMultiplier = 2;
@@ -42,6 +42,7 @@ private:
 	int direction = 0;
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
+	bool attackupflag = false;
 	Uint32 animationDelayer = SDL_GetTicks();
 	//Health *player_health = new Health(max_health);
 };
