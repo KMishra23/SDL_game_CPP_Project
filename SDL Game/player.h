@@ -26,6 +26,8 @@ public:
 	int GetPosX();
 	int GetPosY();
 	int getDirection();
+	bool IsCollidingWithBullet(int BulletX, int BulletY);
+	bool IsCollidingWithEnemy(int EnemyX,int EnemyY);
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);

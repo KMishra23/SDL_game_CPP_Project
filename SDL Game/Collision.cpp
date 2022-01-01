@@ -44,11 +44,43 @@ int Player::IsChangingMap(int direction, Map* mymap, int CurrMapNumber)
 	}
 	return CurrMapNumber;
 }
-bool IsCollidingWithBullet()
+bool Player::IsCollidingWithBullet(int BulletX,int BulletY)
 {
-	return true;
+	if (BulletX - GetPosX() == 64 && (BulletY >= GetPosY() - 32 && BulletY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosX() - BulletX == 32 && (BulletY >= GetPosY() - 32 && BulletY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosY() - BulletY == 32 && (BulletX >= GetPosX() - 32 && BulletX <= GetPosX() + 64))
+	{
+		return true;
+	}
+	else if (BulletY - GetPosY() == 64 && (BulletX >= GetPosX() - 32 && BulletX <= GetPosX() + 64))
+	{
+		return true;
+	}
+	return false;
 }
-bool IsCollidingWithEnemy()
+bool Player::IsCollidingWithEnemy(int EnemyX,int EnemyY)
 {
+	if (EnemyX - GetPosX() == 64 && (EnemyY >= GetPosY() - 64 && EnemyY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosX() - EnemyX == 64 && (EnemyY >= GetPosY() - 64 && EnemyY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosY() - EnemyY == 64 && (EnemyX >= GetPosX() - 64 && EnemyX <= GetPosX() + 64))
+	{
+		return true;
+	}
+	else if (EnemyY - GetPosY() == 64 && (EnemyX >= GetPosX() - 64 && EnemyX <= GetPosX() + 64))
+	{
+		return true;
+	}
 	return false;
 }

@@ -7,8 +7,7 @@
 class Enemy1 : public GameObject
 {
 public:
-	Enemy1(const char* textureSheet, int x, int y, int scale, int mapNum)
-		;
+	Enemy1(const char* textureSheet, int x, int y, int scale, int mapNum);
 	~Enemy1();
 	int GetPosX() { return xpos; }
 	int GetPosY() { return ypos; }
