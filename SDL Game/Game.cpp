@@ -5,14 +5,13 @@
 #include "player.h"
 #include "KeyboardInputManager.h"
 #include "Enemy1.h"
-<<<<<<< HEAD
 #include "Health.h"
-=======
 #include "Enemy.h"
->>>>>>> e35e0e1d8a88fab0fb6b67c6ef3445fc0e603b91
+#include "Turret.h"
 
 Player* player;
 Enemy* enemy1;
+Turret* turret1;
 Map* map;
 KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
@@ -54,6 +53,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	//temporary = new Health(5);
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
 	enemy1 = new Enemy("Assets/Enemies.png", 1024 - 192, 256, 4, 1);
+	turret1 = new Turret("Assets/Enemies.png", 1024 - 192, 64, 4, 1);
 	
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
@@ -102,10 +102,10 @@ void Game::HandleEvents()
 			}
 			break;
 		}
-
 	default:
 		break;
 	}
+
 	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
 		cout << "boom" << endl;
 	}
@@ -145,6 +145,7 @@ void Game::Update()
 
 	player->Update();
 	enemy1->Update();
+	turret1->Update();
 
 	//cout << count << endl;
 }
@@ -157,6 +158,7 @@ void Game::Render()
 	map->LoadMap(map_number);
 	player->Render();
 	enemy1->Render();
+	turret1->Render();
 	SDL_RenderPresent(renderer);
 }
 

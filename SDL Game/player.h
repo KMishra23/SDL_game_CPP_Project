@@ -43,7 +43,7 @@ private:
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();
-	Health* health;
+	//Health* health;
 };
 
 #endif

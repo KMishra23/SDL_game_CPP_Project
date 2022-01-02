@@ -168,12 +168,14 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="PlayerAnimationHandler.cpp" />
+    <ClCompile Include="Turret.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy1.h" />
+    <ClInclude Include="Turret.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="PlayerAnimationHandler.h" />
     <ClInclude Include="Game.h" />

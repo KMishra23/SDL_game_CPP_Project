@@ -54,6 +54,9 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Turret.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

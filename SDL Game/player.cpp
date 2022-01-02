@@ -3,7 +3,7 @@
 
 Player::Player(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
 {
-	health = new Health(5);
+	//health = new Health(5);
 }
 void Player::Set(int x, int y)
 {
@@ -107,7 +107,7 @@ void Player::MoveDown()
 
 void Player::AttackUp()
 {
-	if (SDL_GetTicks() - animationDelayer > 300)
+	if (SDL_GetTicks() - animationDelayer > 150)
 	{
 		srcRect.w = 16;
 		srcRect.h = 27;
@@ -119,7 +119,7 @@ void Player::AttackUp()
 			animatorCount = 0;
 		}
 	}
-	destRect.y = ypos - 64;
+	destRect.y = ypos - 64+16;
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
@@ -127,7 +127,7 @@ void Player::AttackUp()
 
 void Player::AttackDown()
 {
-	if (SDL_GetTicks() - animationDelayer > 300)
+	if (SDL_GetTicks() - animationDelayer > 150)
 	{
 		srcRect.w = 16;
 		srcRect.h = 27;
@@ -147,12 +147,42 @@ void Player::AttackDown()
 
 void Player::AttackLeft()
 {
-
+	if (SDL_GetTicks() - animationDelayer > 150)
+	{
+		srcRect.w = Animator->Attackwidth()[animatorCount];
+		srcRect.h = 16;
+		animationDelayer = SDL_GetTicks();
+		srcRect.x = Animator->leftAttack()[animatorCount];
+		srcRect.y = Animator->leftAttack()[animatorCount + 1];
+		animatorCount += 2;
+		if (animatorCount > 6) {
+			animatorCount = 0;
+		}
+	}
+	destRect.y = ypos;
+	destRect.x = xpos;
+	destRect.w = srcRect.w * 4;
+	destRect.h = srcRect.h * 4;
 }
 
 void Player::AttackRight()
 {
-
+	if (SDL_GetTicks() - animationDelayer > 150)
+	{
+		srcRect.w = Animator->Attackwidth()[animatorCount]+1;
+		srcRect.h = 15;
+		animationDelayer = SDL_GetTicks();
+		srcRect.x = Animator->rightAttack()[animatorCount];
+		srcRect.y = Animator->rightAttack()[animatorCount + 1];
+		animatorCount += 2;
+		if (animatorCount > 6) {
+			animatorCount = 0;
+		}
+	}
+	destRect.y = ypos;
+	destRect.x = xpos;
+	destRect.w = srcRect.w * 4;
+	destRect.h = srcRect.h * 4;
 }
 
 void Player::Update()

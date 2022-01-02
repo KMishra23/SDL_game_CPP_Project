@@ -58,3 +58,7 @@ int* PlayerAnimationHandler::rightAttack()
 {
 	return atkRight;
 }
+
+int* PlayerAnimationHandler::Attackwidth() {
+	return width;
+}
