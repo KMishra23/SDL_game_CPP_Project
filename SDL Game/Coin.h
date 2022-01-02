@@ -12,11 +12,10 @@ private:
 
 
 public:
-	Coin();
+	Coin(const char* textureSheet, int x, int y, int scale);
 	~Coin();
 	
 	bool CollectionQuery();
-	
 };
 
 #endif

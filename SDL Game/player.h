@@ -14,6 +14,7 @@ public:
 	Player(const char* textureSheet, int x, int y, int scale);
 	~Player();
 
+	void initHealth();
 	void assignAnimator(PlayerAnimationHandler* Animator);
 	void MoveLeft();
 	void MoveRight();
@@ -33,9 +34,10 @@ public:
 	bool IsCollectingCoin(int CoinX, int CoinY);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
-	//void renderHearts();
-	//void Damage_1();
-	//void Regenerate_1();
+	void renderHearts();
+	void Damage_1();
+	void Regenerate_1();
+	int healthQuery();
 
 private:
 	int speedMultiplier = 2;
@@ -45,7 +47,7 @@ private:
 	bool movingDown = false;
 	PlayerAnimationHandler* Animator;
 	Uint32 animationDelayer = SDL_GetTicks();
-	//Health* health;
+	Health* player_health;
 };
 
 #endif

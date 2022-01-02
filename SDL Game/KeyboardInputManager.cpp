@@ -87,5 +87,16 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 		score->UpdateScore(-1);
 		cout << "Current Score is: " << score->getScore() << endl;
 	}
+	if (keystates[SDL_SCANCODE_L])
+	{
+		player->Damage_1();
+		cout << "Current health is: " << player->healthQuery() << endl;
+	}
+	if (keystates[SDL_SCANCODE_K])
+	{
+		player->Regenerate_1();
+		cout << "Current health is: " << player->healthQuery() << endl;
+	}
+		
 	return CurrentMapNumber;
 }

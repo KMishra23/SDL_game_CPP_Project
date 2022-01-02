@@ -33,3 +33,13 @@ void GameObject::Render()
 {
 	SDL_RenderCopy(Game::renderer, objectTexture, &srcRect, &destRect);
 }
+
+int GameObject::xPosQuery()
+{
+	return xpos;
+}
+
+int GameObject::yPosQuery()
+{
+	return ypos;
+}

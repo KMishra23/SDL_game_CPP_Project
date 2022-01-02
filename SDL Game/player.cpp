@@ -2,9 +2,13 @@
 #include "Game.h"
 
 Player::Player(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
+{}
+
+void Player::initHealth()
 {
-	//health = new Health(5);
+	player_health = new Health(5);
 }
+
 void Player::Set(int x, int y)
 {
 	xpos = x;
@@ -199,7 +203,7 @@ void Player::Update()
 	
 	//srcRect.x = 0;
 
-	//player_health->Update_Meter();
+	player_health->Update_Meter();
 
 }
 int Player::GetPosX()
@@ -214,7 +218,7 @@ int Player::getDirection()
 {
 	return direction;
 }
-/*
+
 void Player::renderHearts()
 {
 	player_health->Render();
@@ -229,5 +233,9 @@ void Player::Regenerate_1()
 {
 	player_health->Increase_1();
 }
-*/
+
+int Player::healthQuery()
+{
+	return player_health->health_query();
+}
 

@@ -1,12 +1,10 @@
 #include "Coin.h"
 
-Coin::Coin()
+Coin::Coin(const char* textureSheet, int x, int y, int scale) : GameObject(textureSheet, x, y, scale)
 {}
 
-Coin::~Coin()
-{}
 
 bool Coin::CollectionQuery()
 {
-
+	return true;
 }

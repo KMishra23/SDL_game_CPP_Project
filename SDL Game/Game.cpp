@@ -5,7 +5,7 @@
 #include "player.h"
 #include "KeyboardInputManager.h"
 #include "Enemy1.h"
-#include "Health.h"
+//#include "Health.h"
 #include "Enemy.h"
 #include "Turret.h"
 //#include "Scoreboard.h"
@@ -16,7 +16,7 @@ Turret* turret1;
 Map* map;
 KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
-Health* temporary;
+//Health* temporary;
 
 Game::Game(Scoreboard* scoreboard) 
 {
@@ -58,13 +58,15 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
 	enemy1 = new Enemy("Assets/Enemies.png", 1024 - 192, 256, 4, 1);
 	turret1 = new Turret("Assets/Enemies.png", 192, 64, 4, 1);
+
+	player->initHealth();
 	
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
 	map = new Map(1);
 	KIM = new KeyboardManager();
 
-	/*
+	
 	SDL_Surface* black = IMG_Load("Assets/Black.png");
 	SDL_Texture* black_surface = SDL_CreateTextureFromSurface(renderer, black);
 	SDL_FreeSurface(black);
@@ -78,7 +80,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	blk_src.w = 1024;
 	blk_src.h = 100;
 	SDL_RenderCopy(renderer, black_surface, &blk_src, &blk_dest);
-	*/
+	
 }
 
 void Game::HandleEvents()
@@ -111,6 +113,8 @@ void Game::HandleEvents()
 	}
 
 	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
+		player->Damage_1();
+		score->UpdateScore(-1);
 		if (map_number == 1) {
 			player->Set(1024 - 64 * 3, 256 + 64);
 		}
@@ -165,7 +169,7 @@ void Game::Update()
 void Game::Render() 
 {
 	SDL_RenderClear(renderer);
-	//player->renderHearts();
+	player->renderHearts();
 	map->DrawMap(map_number);
 	map->LoadMap(map_number);
 	player->Render();

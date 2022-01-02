@@ -14,6 +14,8 @@ public:
 
 	void Update();
 	void Render();
+	int xPosQuery();
+	int yPosQuery();
 
 protected:
 	int xpos = 80;

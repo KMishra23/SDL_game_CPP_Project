@@ -29,23 +29,25 @@ Health::Health(int init_val)
 	empty_heart_src.h = 8;
 	empty_heart_src.w = 8;
 
-	destRect.w = 8;
-	destRect.h = 8;
+	destRect.w = 64;
+	destRect.h = 64;
 	destRect.x = xpos;
 	destRect.y = ypos;
+
+	cout << max_health << endl;
 }
 
-Health::~Health()
-{}
 
 void Health::Decrease_1()
 {
 	health_points--;
+	if (health_points < 0) health_points = 0;
 }
 
 void Health::Increase_1()
 {
 	health_points++;
+	if (health_points > max_health) health_points = max_health;
 }
 
 int Health::health_query()
@@ -55,7 +57,11 @@ int Health::health_query()
 
 void Health::Update_Meter()
 {
-	for (int i = health_points-1; i < max_health; i++)
+	for (int i = 0; i < max_health; i++)
+	{
+		hearts[i] = 1;
+	}
+	for (int i = health_points; i < max_health; i++)
 	{
 		hearts[i] = 0;
 	}
@@ -73,7 +79,7 @@ void Health::Render()
 		{
 			SDL_RenderCopy(Game::renderer, hearts_sheet, &empty_heart_src, &destRect);
 		}
-		destRect.x += 8;
+		destRect.x += 64;
 	}
 	destRect.x = xReset;
 }
