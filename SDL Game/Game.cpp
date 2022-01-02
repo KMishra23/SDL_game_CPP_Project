@@ -53,7 +53,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	//temporary = new Health(5);
 	player = new Player("Assets/Movement_Attack.png", 192, 192, 4);
 	enemy1 = new Enemy("Assets/Enemies.png", 1024 - 192, 256, 4, 1);
-	turret1 = new Turret("Assets/Enemies.png", 1024 - 192, 64, 4, 1);
+	turret1 = new Turret("Assets/Enemies.png", 192, 64, 4, 1);
 	
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
@@ -107,7 +107,15 @@ void Game::HandleEvents()
 	}
 
 	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
-		cout << "boom" << endl;
+		if (map_number == 1) {
+			player->Set(1024 - 64 * 3, 256 + 64);
+		}
+		if (map_number == 2) {
+			player->Set(512 - 32, 704 - 3 * 64);
+		}
+		else {
+			player->Set(512 - 32, 704 - 3 * 64);
+		}
 	}
 
 	if (map_number != prev)
