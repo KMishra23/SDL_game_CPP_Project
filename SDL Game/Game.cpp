@@ -8,6 +8,7 @@
 #include "Health.h"
 #include "Enemy.h"
 #include "Turret.h"
+//#include "Scoreboard.h"
 
 Player* player;
 Enemy* enemy1;
@@ -17,7 +18,10 @@ KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
 Health* temporary;
 
-Game::Game() {}
+Game::Game(Scoreboard* scoreboard) 
+{
+	score = scoreboard;
+}
 Game::~Game() {}
 
 void Game::Init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
@@ -98,7 +102,7 @@ void Game::HandleEvents()
 		default:
 			if (event.type == SDL_KEYDOWN)
 			{
-				map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number);
+				map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number, score);
 			}
 			break;
 		}
@@ -106,7 +110,7 @@ void Game::HandleEvents()
 		break;
 	}
 
-	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
+	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {  //checking for enemy collision with player
 		cout << "boom" << endl;
 	}
 

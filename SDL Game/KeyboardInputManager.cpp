@@ -7,7 +7,7 @@ KeyboardManager::KeyboardManager()
 KeyboardManager::~KeyboardManager()
 {}
 
-int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* keystates,Map* mymap,int CurrentMapNumber)
+int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* keystates,Map* mymap,int CurrentMapNumber, Scoreboard *score)
 {
 	if ((keystates[SDL_SCANCODE_UP] || keystates[SDL_SCANCODE_W]) && SDL_GetTicks() - delayUp > delayUnit)
 	{
@@ -62,10 +62,14 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 	if (keystates[SDL_SCANCODE_Q])
 	{
 		//player->Damage_1();
+		score->UpdateScore(1);
+		cout << "Current Score is: " << score->getScore() << endl;
 	}
 	if (keystates[SDL_SCANCODE_E])
 	{
 		//player->Regenerate_1();
+		score->UpdateScore(-1);
+		cout << "Current Score is: " << score->getScore() << endl;
 	}
 	return CurrentMapNumber;
 }

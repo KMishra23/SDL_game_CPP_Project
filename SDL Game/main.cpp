@@ -1,11 +1,13 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "Scoreboard.h"
+#include <vector>
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 804; //704 tak main screen hai
 Game* game = nullptr;
-
+Scoreboard* scoreboard = nullptr;
 
 int main(int argc, char* argv[])
 {	
@@ -15,7 +17,8 @@ int main(int argc, char* argv[])
 	Uint32 frameStart;
 	int frameTime;
 
-	game = new Game();
+	scoreboard = new Scoreboard();
+	game = new Game(scoreboard);
 
 	game->Init("Korok Dungeon Alpha 3.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, false);
 
@@ -36,6 +39,8 @@ int main(int argc, char* argv[])
 			SDL_Delay(frameDelay - frameTime);
 		}
 	}
+
+	scoreboard->saveScore();
 
 	game->Clean();
 

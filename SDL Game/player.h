@@ -6,6 +6,7 @@
 #include "PlayerAnimationHandler.h"
 #include"Game.h"
 #include "Health.h"
+#include "Scoreboard.h"
 
 class Player : public GameObject
 {
@@ -29,6 +30,7 @@ public:
 	bool IsCollidingWithBullet(int BulletX, int BulletY);
 	bool IsCollidingWithEnemy(int EnemyX,int EnemyY);
 	bool IsCollidingWithWalls(int direction, Map* mymap,int CurrMapNumber);
+	bool IsCollectingCoin(int CoinX, int CoinY);
 	int IsChangingMap(int direction, Map* mymap, int CurrMapNumber);
 	void Set(int x, int y);
 	//void renderHearts();

@@ -84,3 +84,24 @@ bool Player::IsCollidingWithEnemy(int EnemyX,int EnemyY)
 	}
 	return false;
 }
+
+bool Player::IsCollectingCoin(int CoinX, int CoinY)
+{
+	if (CoinX - GetPosX() == 64 && (CoinY >= GetPosY() - 64 && CoinY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosX() - CoinX == 64 && (CoinY >= GetPosY() - 64 && CoinY <= GetPosY() + 64))
+	{
+		return true;
+	}
+	else if (GetPosY() - CoinY == 64 && (CoinX >= GetPosX() - 64 && CoinX <= GetPosX() + 64))
+	{
+		return true;
+	}
+	else if (CoinY - GetPosY() == 64 && (CoinX >= GetPosX() - 64 && CoinX <= GetPosX() + 64))
+	{
+		return true;
+	}
+	return false;
+}

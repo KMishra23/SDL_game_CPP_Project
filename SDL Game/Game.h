@@ -6,13 +6,14 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
-#include<math.h>
+#include <math.h>
+#include "Scoreboard.h"
 using namespace std;
 
 class Game
 {
 public:
-	Game();
+	Game(Scoreboard* scoreboard);
 	~Game();
 
 	void Init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
@@ -40,7 +41,7 @@ private:
 	SDL_Window* window;
 	SDL_Event event;
 	const Uint8* keystates;
-
+	Scoreboard* score;
 };
 
 #endif
