@@ -1,17 +1,45 @@
 #include "Bullet.h"
 #include "Game.h"
 
-Bullet::Bullet(const char* textureSheet, int x, int y, int scale, int direction, Enemy* enemy) : GameObject(textureSheet, x, y, scale)
+Bullet::Bullet(const char* textureSheet, int x, int y, int scale, int direction) : GameObject(textureSheet, x, y, scale)
 {
 	this->direction = direction;
 }
 
+void Bullet::addTurret(Turret* turret) {
+	direction = turret->getDirection();
+	if (direction == 1) {
+		xpos = turret->GetPosX() + 16;
+		ypos = turret->GetPosY() + 64;
+		initposx = xpos;
+		initposy = ypos;
+	}
+	else if (direction == -1) {
+		xpos = turret->GetPosX() + 16;
+		ypos = turret->GetPosY() - 64;
+		initposx = xpos;
+		initposy = ypos;
+	}
+	else if (direction == 2) {
+		xpos = turret->GetPosX() + 64;
+		ypos = turret->GetPosY() + 16;
+		initposx = xpos;
+		initposy = ypos;
+	}
+	else {
+		xpos = turret->GetPosX() - 64;
+		ypos = turret->GetPosY() + 16;
+		initposx = xpos;
+		initposy = ypos;
+	}
+}
+
 void Bullet::Update()
 {
-	srcRect.x = 0;
-	srcRect.y = 0;
-	srcRect.h = 64;
-	srcRect.w = 64;
+	srcRect.x = 69;
+	srcRect.y = 11;
+	srcRect.h = 15;
+	srcRect.w = 7;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
 
@@ -26,6 +54,10 @@ void Bullet::Update()
 	}
 	else if (direction == -2) {
 		xpos -= speedMultiplier;
+	}
+	if (xpos > 1024 - 192 || ypos > 576 - 64 || xpos < 128 || ypos < 128) {
+		xpos = initposx;
+		ypos = initposy;
 	}
 
 	destRect.x = xpos;

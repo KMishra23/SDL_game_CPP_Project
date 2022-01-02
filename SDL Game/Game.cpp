@@ -8,11 +8,13 @@
 //#include "Health.h"
 #include "Enemy.h"
 #include "Turret.h"
+#include "Bullet.h"
 //#include "Scoreboard.h"
 
 Player* player;
 Enemy* enemy1;
 Turret* turret1;
+Bullet* bullet1;
 Map* map;
 KeyboardManager* KIM;
 SDL_Renderer* Game::renderer = nullptr;
@@ -60,6 +62,10 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	turret1 = new Turret("Assets/Enemies.png", 192, 64, 4, 1);
 
 	player->initHealth();
+	
+	turret1 = new Turret("Assets/Enemies.png", 128, 576, 4, -1);
+	bullet1 = new Bullet("Assets/Enemies.png", 192, 64, 4, turret1->getDirection());
+	bullet1->addTurret(turret1);
 	
 	PlayerAnimationHandler* PlayerAnimator = new PlayerAnimationHandler("Assets/Movement_Attack.png");
 	player->assignAnimator(PlayerAnimator);
@@ -112,9 +118,7 @@ void Game::HandleEvents()
 		break;
 	}
 
-	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY())) {
-		player->Damage_1();
-		score->UpdateScore(-1);
+	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY()) || player->IsCollidingWithBullet(bullet1->GetPosX(), bullet1->GetPosY())) {
 		if (map_number == 1) {
 			player->Set(1024 - 64 * 3, 256 + 64);
 		}
@@ -133,23 +137,31 @@ void Game::HandleEvents()
 			//map3
 			player->Set(1024 - 64 * 3, 256+64);
 			enemy1->SetPos(128+64, 64*5, 2);
+			turret1->SetPos(128 - 64, 192, 2);
+			bullet1->addTurret(turret1);
 		}
 		else if (player->GetPosX() >= 14 * 64)
 		{
 			//map1
 			player->Set(128, 256+64);
 			enemy1->SetPos(1024 - 192, 256, 1);
+			turret1->SetPos(128, 576, -1);
+			bullet1->addTurret(turret1);
 		}
 		else if (player->GetPosY() <= 128)
 		{
 			//map2
 			player->Set(512 - 32, 704 - 3 * 64);
 			enemy1->SetPos(128+64, 64*3, 2);
+			turret1->SetPos(64, 576 - 128, 2);
+			bullet1->addTurret(turret1);
 		}
 		else
 		{
 			player->Set(512 - 32, 128);
 			enemy1->SetPos(192, 256, 1);
+			turret1->SetPos(128, 576, -1);
+			bullet1->addTurret(turret1);
 		}
 		prev = map_number;
 	}
@@ -162,6 +174,7 @@ void Game::Update()
 	player->Update();
 	enemy1->Update();
 	turret1->Update();
+	bullet1->Update();
 
 	//cout << count << endl;
 }
@@ -175,6 +188,7 @@ void Game::Render()
 	player->Render();
 	enemy1->Render();
 	turret1->Render();
+	bullet1->Render();
 	SDL_RenderPresent(renderer);
 }
 
