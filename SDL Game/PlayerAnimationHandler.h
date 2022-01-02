@@ -21,6 +21,7 @@ public:
 	int* rightAttack();
 	int* leftAttack();
 	int* Attackwidth();
+	int* AttackCorrection();
 
 private:
 	SDL_Texture* baseTexture = NULL;
@@ -34,6 +35,7 @@ private:
 	int atkRight[8] = {0, 44, 17, 44, 45, 44, 69, 43};
 	int atkLeft[8] = {164, 44, 135, 44, 111, 44, 92, 43};
 	int width[8] = {16, 0, 26, 0, 22, 0, 17, 0};
+	int atkcrtn[8] = {0, 0, 12, 0, 11, 0, 4, 0};
 };
 
 #endif

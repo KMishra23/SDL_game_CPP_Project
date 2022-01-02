@@ -119,7 +119,7 @@ void Player::AttackUp()
 			animatorCount = 0;
 		}
 	}
-	destRect.y = ypos - 64+16;
+	destRect.y = ypos - 48; // Animator->AttackCorrection()[animatorCount];
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
@@ -160,7 +160,7 @@ void Player::AttackLeft()
 		}
 	}
 	destRect.y = ypos;
-	destRect.x = xpos;
+	destRect.x = xpos - Animator->AttackCorrection()[animatorCount];
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
 }
