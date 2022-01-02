@@ -119,6 +119,9 @@ void Game::HandleEvents()
 	}
 
 	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY()) || player->IsCollidingWithBullet(bullet1->GetPosX(), bullet1->GetPosY())) {
+		player->Damage_1();
+		score->UpdateScore(-1);
+
 		if (map_number == 1) {
 			player->Set(1024 - 64 * 3, 256 + 64);
 		}
