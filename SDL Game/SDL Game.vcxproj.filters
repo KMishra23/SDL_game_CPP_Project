@@ -60,9 +60,6 @@
     <ClCompile Include="Scoreboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Coin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -95,17 +92,14 @@
     <ClInclude Include="Health.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Turret.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Scoreboard.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Coin.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
