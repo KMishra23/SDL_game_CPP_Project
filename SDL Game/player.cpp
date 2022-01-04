@@ -40,6 +40,8 @@ void Player::MoveLeft()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 	
 }
 
@@ -63,6 +65,8 @@ void Player::MoveRight()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::MoveUp()
@@ -85,6 +89,8 @@ void Player::MoveUp()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::MoveDown()
@@ -107,6 +113,8 @@ void Player::MoveDown()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::AttackUp()
@@ -127,6 +135,8 @@ void Player::AttackUp()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::AttackDown()
@@ -147,6 +157,8 @@ void Player::AttackDown()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::AttackLeft()
@@ -167,6 +179,8 @@ void Player::AttackLeft()
 	destRect.x = xpos - Animator->AttackCorrection()[animatorCount];
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::AttackRight()
@@ -187,6 +201,8 @@ void Player::AttackRight()
 	destRect.x = xpos;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 }
 
 void Player::Update()

@@ -1,4 +1,4 @@
-#include"player.h"
+#include "player.h"
 bool Player::IsCollidingWithWalls(int direction,Map* mymap,int CurrMapNumber)
 {
 	
@@ -104,4 +104,22 @@ bool Player::IsCollectingCoin(int CoinX, int CoinY)
 		return true;
 	}
 	return false;
+}
+
+bool Player::BulletCollisionCheck(Bullet* bullet) 
+{
+	return
+		bullet->GetPosX() + bullet->getWidth() > GetPosX() &&
+		bullet->GetPosY() + bullet->getHeight() > GetPosY() &&
+		GetPosX() + getWidth() > bullet->GetPosX() &&
+		GetPosY() + getHeight() > bullet->GetPosY();
+}
+
+bool Player::EnemyCollisionCheck(Enemy* enemy) 
+{
+	return
+		(enemy->GetPosX()+2) + (enemy->getWidth()+2) > GetPosX() &&
+		(enemy->GetPosY()+2)+ (enemy->getHeight()+2) > GetPosY() &&
+		GetPosX() + getWidth() > (enemy->GetPosX()+2) &&
+		GetPosY() + getHeight() > (enemy->GetPosY()+2);
 }
