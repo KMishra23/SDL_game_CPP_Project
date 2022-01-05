@@ -8,6 +8,8 @@
 #include <iostream>
 #include <math.h>
 #include "Scoreboard.h"
+#include <SDL_ttf.h>
+
 using namespace std;
 
 class Game
@@ -32,6 +34,7 @@ public:
 	{
 		return isRunning;
 	}
+	void ShowMenu();
 	//bool IsCollidingWithEnemy(Player *player,);
 private:
 	int count = 0;
