@@ -43,3 +43,13 @@ int GameObject::yPosQuery()
 {
 	return ypos;
 }
+
+int GameObject::getWidth()
+{
+	return width;
+}
+
+int GameObject::getHeight()
+{
+	return height;
+}

@@ -117,7 +117,22 @@ void Game::HandleEvents()
 		break;
 	}
 
-	if (player->IsCollidingWithEnemy(enemy1->GetPosX(), enemy1->GetPosY()) || player->IsCollidingWithBullet(bullet1->GetPosX(), bullet1->GetPosY())) {
+	if (player->EnemyCollisionCheck(enemy1)) {
+		player->Damage_1();
+		score->UpdateScore(-1);
+
+		if (map_number == 1) {
+			player->Set(1024 - 64 * 3, 256 + 64);
+		}
+		if (map_number == 2) {
+			player->Set(512 - 32, 704 - 3 * 64);
+		}
+		else {
+			player->Set(512 - 32, 704 - 3 * 64);
+		}
+	}
+
+	if (player->BulletCollisionCheck(bullet1)) {
 		player->Damage_1();
 		score->UpdateScore(-1);
 

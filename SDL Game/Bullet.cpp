@@ -42,6 +42,8 @@ void Bullet::Update()
 	srcRect.w = 7;
 	destRect.w = srcRect.w * 4;
 	destRect.h = srcRect.h * 4;
+	width = destRect.w;
+	height = destRect.h;
 
 	if (direction == 1) {
 		ypos += speedMultiplier;

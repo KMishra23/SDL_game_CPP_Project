@@ -13,28 +13,28 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 	{
 		delayUp = SDL_GetTicks();
 		
-		if (!player->IsCollidingWithWalls(0,mymap,CurrentMapNumber) && !player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY()))
+		if (!player->IsCollidingWithWalls(0,mymap,CurrentMapNumber) && !player->EnemyCollisionCheck(enemy))
 		player->MoveUp();
 		return player->IsChangingMap(0, mymap,CurrentMapNumber);
 	}
 	if ((keystates[SDL_SCANCODE_DOWN] || keystates[SDL_SCANCODE_S]) && SDL_GetTicks() - delayDown > delayUnit)
 	{
 		delayDown = SDL_GetTicks();
-		if(!player->IsCollidingWithWalls(2,mymap,CurrentMapNumber)  && !player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY()))
+		if(!player->IsCollidingWithWalls(2,mymap,CurrentMapNumber)  && !player->EnemyCollisionCheck(enemy))
 		player->MoveDown();
 		return player->IsChangingMap(2, mymap,CurrentMapNumber);
 	}
 	if ((keystates[SDL_SCANCODE_RIGHT] || keystates[SDL_SCANCODE_D]) && SDL_GetTicks() - delayRight > delayUnit)
 	{
 		delayRight = SDL_GetTicks();
-		if (!player->IsCollidingWithWalls(1, mymap,CurrentMapNumber) && !player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY()))
+		if (!player->IsCollidingWithWalls(1, mymap,CurrentMapNumber) && !player->EnemyCollisionCheck(enemy))
 		player->MoveRight();
 		return player->IsChangingMap(1, mymap,CurrentMapNumber);
 	}
 	if ((keystates[SDL_SCANCODE_LEFT] || keystates[SDL_SCANCODE_A]) && SDL_GetTicks() - delayLeft > delayUnit)
 	{
 		delayLeft = SDL_GetTicks();
-		if (!player->IsCollidingWithWalls(3,mymap,CurrentMapNumber) && !player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY()))
+		if (!player->IsCollidingWithWalls(3,mymap,CurrentMapNumber) && !player->EnemyCollisionCheck(enemy))
 		player->MoveLeft();
 		return player->IsChangingMap(3, mymap,CurrentMapNumber);
 	}

@@ -16,10 +16,13 @@ public:
 	void Render();
 	int xPosQuery();
 	int yPosQuery();
+	int getWidth();
+	int getHeight();
 
 protected:
 	int xpos = 80;
 	int ypos = 80;
+	int width, height;
 	int objectSizeScale = 1;
 
 	SDL_Texture* objectTexture= NULL;
