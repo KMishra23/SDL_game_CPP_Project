@@ -127,13 +127,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)SDL Game\include;J:\SDL2_ttf-devel-2.0.15-VC\SDL2_ttf-2.0.15\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SDL Game\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)SDL Game\Libs\x64_SDL2_Image;$(SolutionDir)SDL Game\Libs\x64_SDL2;J:\SDL2_ttf-devel-2.0.15-VC\SDL2_ttf-2.0.15\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)SDL Game\Libs\x64_SDL2_Image;$(SolutionDir)SDL Game\Libs\x64_SDL2;$(SolutionDir)SDL Game\Libs\x64_SDL2_ttf</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
