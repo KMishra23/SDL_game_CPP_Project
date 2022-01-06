@@ -224,21 +224,24 @@ void Game::ShowMenu(){
 	SDL_RenderCopy(renderer, background,NULL, &background_rect);
 
 	const int NUMMENU = 2;
-	const char* labels[NUMMENU] = { "Start Game","Exit" };
 	SDL_Texture* menuText[NUMMENU];
 	SDL_Surface* menu[NUMMENU];
+	
 	if (TTF_Init() == -1) {
 		std::cout << "Could not initailize SDL2_ttf, error: " << TTF_GetError() << std::endl;
+		return;
 	}
-	TTF_Font* ourFont = TTF_OpenFont("Assets/28 Days Later.ttf", 100);
-	if (ourFont == nullptr) {
+	TTF_Font* Font = TTF_OpenFont("Assets/28 Days Later.ttf", 100);
+	if (Font == nullptr) {
 		std::cout << "Could not load font" << std::endl;
 		return;
 	}
-	menu[0] = TTF_RenderText_Solid(ourFont, "Continue Game", {255,255,255});
+	
+	menu[0] = TTF_RenderText_Solid(Font, "Continue Game", {255,255,255});
 	menuText[0] = SDL_CreateTextureFromSurface(renderer, menu[0]);
 	SDL_FreeSurface(menu[0]);
-	menu[1] = TTF_RenderText_Solid(ourFont, "Exit", { 255,255,255 });
+
+	menu[1] = TTF_RenderText_Solid(Font, "Exit", { 255,255,255 });
 	menuText[1] = SDL_CreateTextureFromSurface(renderer, menu[1]);
 	SDL_FreeSurface(menu[1]);
 	
@@ -273,7 +276,7 @@ void Game::ShowMenu(){
 					//cout << isRunning << endl;
 					return;
 				break;
-				
+				/*
 				case SDL_MOUSEMOTION:
 					SDL_GetMouseState(&Mx, &My);
 					for (int i = 0; i < NUMMENU; i += 1) {
@@ -287,7 +290,7 @@ void Game::ShowMenu(){
 						}
 					}
 				break;
-				
+				*/
 				case SDL_MOUSEBUTTONDOWN:
 					SDL_GetMouseState(&Mx, &My);
 					for (int i = 0; i < NUMMENU; i += 1) {
@@ -323,6 +326,6 @@ void Game::ShowMenu(){
 			}
 		}
 	}
-	TTF_CloseFont(ourFont);
+	TTF_CloseFont(Font);
 	TTF_Quit();
 }
