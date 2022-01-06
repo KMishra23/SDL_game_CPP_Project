@@ -71,53 +71,43 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player->assignAnimator(PlayerAnimator);
 	map = new Map(1);
 	KIM = new KeyboardManager();
-
-	
-	SDL_Surface* black = IMG_Load("Assets/Black.png");
-	SDL_Texture* black_surface = SDL_CreateTextureFromSurface(renderer, black);
-	SDL_FreeSurface(black);
-	SDL_Rect blk_src, blk_dest;
-	blk_dest.x = 0;
-	blk_dest.y = 704;
-	blk_dest.w = 1024;
-	blk_dest.h = 100;
-	blk_src.x = 0;
-	blk_src.y = 0;
-	blk_src.w = 1024;
-	blk_src.h = 100;
-	SDL_RenderCopy(renderer, black_surface, &blk_src, &blk_dest);
-	
 }
 
 void Game::HandleEvents()
 {
 	SDL_PollEvent(&event);
 	keystates = SDL_GetKeyboardState(NULL);
+	/*
+	if (run = false) {
+		isRunnning = false;
+	}
+	*/
 	switch (event.type)
 	{
-	case SDL_QUIT:
-		isRunning = false;
+		case SDL_QUIT:
+			isRunning = false;
 		break;
 
-	case SDL_KEYDOWN:
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_ESCAPE:
-			cout << "Opening Menu" << endl;
-			ShowMenu();
-			break;
-		default:
-			if (event.type == SDL_KEYDOWN)
+		case SDL_KEYDOWN:
+			//cout << "Key Pressed" << endl;
+			switch (event.key.keysym.sym)
 			{
-				map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number, score);
-			}
+			case SDLK_ESCAPE:
+				cout << "Opening Menu" << endl;
+				ShowMenu();
+				cout << "Exiting Menu" << endl;
+				cout << "is Running ->"<<isRunning << endl;
 			break;
-		}
-	default:
+			default:
+				if (event.type == SDL_KEYDOWN)
+				{
+					map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number, score);
+				}
+			break;
+			}
 		break;
 	}
-
-	if (player->EnemyCollisionCheck(enemy1)) {
+	if(player->EnemyCollisionCheck(enemy1)) {
 		player->Damage_1();
 		score->UpdateScore(-1);
 
@@ -132,7 +122,7 @@ void Game::HandleEvents()
 		}
 	}
 
-	if (player->BulletCollisionCheck(bullet1)) {
+	if(player->BulletCollisionCheck(bullet1)) {
 		player->Damage_1();
 		score->UpdateScore(-1);
 
@@ -147,7 +137,7 @@ void Game::HandleEvents()
 		}
 	}
 
-	if (map_number != prev)
+	if(map_number != prev)
 	{
 		if (player->GetPosX() <= 128)
 		{
@@ -184,29 +174,31 @@ void Game::HandleEvents()
 	}
 }
 
-void Game::Update() 
+void Game::Update()
 {
-	//count++;
-
-	player->Update();
-	enemy1->Update();
-	turret1->Update();
-	bullet1->Update();
-
-	//cout << count << endl;
+	if (isRunning){
+		//count++;
+		player->Update();
+		enemy1->Update();
+		turret1->Update();
+		bullet1->Update();
+		//cout << count << endl;
+	}
 }
 
 void Game::Render() 
 {
-	SDL_RenderClear(renderer);
-	player->renderHearts();
-	map->DrawMap(map_number);
-	map->LoadMap(map_number);
-	player->Render();
-	enemy1->Render();
-	turret1->Render();
-	bullet1->Render();
-	SDL_RenderPresent(renderer);
+	if (isRunning){
+		SDL_RenderClear(renderer);
+		player->renderHearts();
+		map->DrawMap(map_number);
+		map->LoadMap(map_number);
+		player->Render();
+		enemy1->Render();
+		turret1->Render();
+		bullet1->Render();
+		SDL_RenderPresent(renderer);
+	}
 }
 
 void Game::Clean() 
@@ -219,90 +211,118 @@ void Game::Clean()
 }
 
 void Game::ShowMenu(){
-	int Mx,My;
-	bool isRunning = false;
+	int Mx, My;
+	//bool run = false;
+	isRunning = false;
 
 	SDL_Texture* background = IMG_LoadTexture(renderer, "Assets/bg.png");
 	SDL_Rect background_rect;
-	background_rect.x = 0;   
-	background_rect.y = 0;   
-	background_rect.w = 1024; 
-	background_rect.h = 804; 
-	SDL_RenderCopy(renderer, background, &background_rect, &background_rect);
-	
+	background_rect.x = 0;
+	background_rect.y = 0;
+	background_rect.w = 1024;
+	background_rect.h = 804;
+	SDL_RenderCopy(renderer, background,NULL, &background_rect);
+
 	const int NUMMENU = 2;
-	const char* labels[NUMMENU] = {"Continue","Exit" };
-	SDL_Texture* menus[NUMMENU];
-	SDL_Texture* newGame = IMG_LoadTexture(renderer, "Assets/play.png");
-	menus[0]=newGame;
+	const char* labels[NUMMENU] = { "Start Game","Exit" };
+	SDL_Texture* menuText[NUMMENU];
+	SDL_Surface* menu[NUMMENU];
+	if (TTF_Init() == -1) {
+		std::cout << "Could not initailize SDL2_ttf, error: " << TTF_GetError() << std::endl;
+	}
+	TTF_Font* ourFont = TTF_OpenFont("Assets/28 Days Later.ttf", 100);
+	if (ourFont == nullptr) {
+		std::cout << "Could not load font" << std::endl;
+		return;
+	}
+	menu[0] = TTF_RenderText_Solid(ourFont, "Continue Game", {255,255,255});
+	menuText[0] = SDL_CreateTextureFromSurface(renderer, menu[0]);
+	SDL_FreeSurface(menu[0]);
+	menu[1] = TTF_RenderText_Solid(ourFont, "Exit", { 255,255,255 });
+	menuText[1] = SDL_CreateTextureFromSurface(renderer, menu[1]);
+	SDL_FreeSurface(menu[1]);
 	
 	SDL_Rect MenuRect[NUMMENU];
-	SDL_Rect newGame_Rect;
-	newGame_Rect.x = 0;
-	newGame_Rect.y = 100;
-	newGame_Rect.w = 50;
-	newGame_Rect.h = 25;
 	
-	SDL_Texture* exit = IMG_LoadTexture(renderer, "Assets/exit.png");
-	menus[1]=exit;
-	
-	SDL_Rect exit_Rect;
-	exit_Rect.x = 0;
-	exit_Rect.y = 200;
-	exit_Rect.w = 50;
-	exit_Rect.h = 25;
-	
-	MenuRect[0]=newGame_Rect;
-	MenuRect[1]=exit_Rect;
-	
+	SDL_Rect continueGame_Rect, exit_Rect;
+	continueGame_Rect.x = 512 - 507 / 2;
+	continueGame_Rect.y = 402 - 80;
+	continueGame_Rect.w = 507;
+	continueGame_Rect.h = 80;
+	exit_Rect.x = 512 - 156 / 2;
+	exit_Rect.y = 402 + 80;
+	exit_Rect.w = 156;
+	exit_Rect.h = 80;
+
+	MenuRect[0] = continueGame_Rect;
+	MenuRect[1] = exit_Rect;
+
 	for (int i = 0; i < NUMMENU; i += 1) {
-		SDL_SetTextureColorMod(menus[i], 250, 250, 250);
-		SDL_RenderCopy(renderer, menus[i], &MenuRect[i], &MenuRect[i]);
+		SDL_SetTextureColorMod(menuText[i], 250, 250, 250);
+		SDL_RenderCopy(renderer, menuText[i], NULL, &MenuRect[i]);
 	}
-	SDL_Event event;
-	while(1){
-		while(SDL_PollEvent(&event)){
-			switch(event.type) {
+	SDL_RenderPresent(renderer);
+
+	SDL_Event e;
+	while (1) {
+		while (SDL_PollEvent(&e)) {
+			switch (e.type){
+				case SDL_QUIT:
+					isRunning = false;
+					//cout << "Game Over" << endl;
+					//cout << isRunning << endl;
+					return;
+				break;
+				
 				case SDL_MOUSEMOTION:
-					SDL_GetMouseState(&Mx, &My); 
-			        for(int i=0; i<NUMMENU; i += 1){
+					SDL_GetMouseState(&Mx, &My);
+					for (int i = 0; i < NUMMENU; i += 1) {
 						if (Mx >= MenuRect[i].x && Mx <= MenuRect[i].x + MenuRect[i].w && My >= MenuRect[i].y && My <= MenuRect[i].y + MenuRect[i].h)
 						{
-							SDL_SetTextureColorMod(menus[i], 250, 0, 0);
+							SDL_SetTextureColorMod(menuText[i], 250, 0, 0);
 						}
 						else
 						{
-							SDL_SetTextureColorMod(menus[i], 250, 250, 250);
+							SDL_SetTextureColorMod(menuText[i], 250, 250, 250);
 						}
-					}	
-				break;			
+					}
+				break;
+				
 				case SDL_MOUSEBUTTONDOWN:
 					SDL_GetMouseState(&Mx, &My);
-					for(int i=0; i<NUMMENU; i += 1){
+					for (int i = 0; i < NUMMENU; i += 1) {
 						if (Mx >= MenuRect[i].x && Mx <= MenuRect[i].x + MenuRect[i].w && My >= MenuRect[i].y && My <= MenuRect[i].y + MenuRect[i].h)
 						{
-							if(i==0){
+							if (i == 0) {
 								isRunning = true;
 								for (int i = 0; i < NUMMENU; i += 1) {
-									SDL_DestroyTexture(menus[1]);
-									SDL_DestroyTexture(menus[0]);
+									SDL_DestroyTexture(menuText[i]);
 								}
+								SDL_DestroyTexture(background);
 								return;
-							}	
-							else{ 
+							}
+							else {
+								//cout << "Game Over" << endl;
 								isRunning = false;
 								return;
-							}	
+							}
 						}
-					}	
+					}
 				break;
+				/*
 				case SDL_KEYDOWN:
 					if (event.key.keysym.sym == SDLK_ESCAPE)
 					{
-						isRunning=false;
+						//cout << "Game Over" << endl;
+						isRunning = false;
+						//cout << isRunning << endl;
 						return;
 					}
-				break;	
+					//break;
+				*/
+			}
 		}
 	}
+	TTF_CloseFont(ourFont);
+	TTF_Quit();
 }

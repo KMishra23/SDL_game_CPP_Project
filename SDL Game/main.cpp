@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
 			SDL_Delay(frameDelay - frameTime);
 		}
 	}
+	cout << "Closing Game" << endl;
 
 	scoreboard->saveScore();
 
