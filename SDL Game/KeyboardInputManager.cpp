@@ -45,6 +45,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 			player->AttackUp();
 			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
+				score->UpdateScore(1);
 			}
 		}
 	}
@@ -54,6 +55,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 			player->AttackDown();
 			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
+				score->UpdateScore(1);
 			}
 		}
 	}
@@ -63,6 +65,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 			player->AttackLeft();
 			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
+				score->UpdateScore(1);
 			}
 		}
 	}
@@ -72,6 +75,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 			player->AttackRight();
 			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
+				score->UpdateScore(1);
 			}
 		}
 	}

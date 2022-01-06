@@ -84,7 +84,7 @@ void Game::HandleEvents()
 		break;
 
 		case SDL_KEYDOWN:
-			cout << "Key Pressed" << endl;
+			//cout << "Key Pressed" << endl;
 			switch (event.key.keysym.sym)
 			{
 			/*
@@ -332,6 +332,7 @@ void Game::Pause(){
 	Rect.w = 210;
 	Rect.h = 100;
 	SDL_RenderCopy(renderer, TextTexture, NULL, &Rect);
+	SDL_RenderPresent(renderer);
 	TTF_CloseFont(Font);
 	TTF_Quit();
 }
