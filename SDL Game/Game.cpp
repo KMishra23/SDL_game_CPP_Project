@@ -116,7 +116,7 @@ void Game::HandleEvents()
 			}
 		break;
 	}
-	if(player->EnemyCollisionCheck(enemy1)) {
+	if(player->EnemyCollisionCheck(enemy1) && player->getHeight() < 17 * 4 && player->getWidth() < 17 * 4) {
 		player->Damage_1();
 		score->UpdateScore(-1);
 

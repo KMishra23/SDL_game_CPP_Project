@@ -22,7 +22,7 @@ void Bullet::addTurret(Turret* turret) {
 	}
 	else if (direction == 2) {
 		xpos = turret->GetPosX() + 64;
-		ypos = turret->GetPosY() + 16;
+		ypos = turret->GetPosY();
 		initposx = xpos;
 		initposy = ypos;
 	}

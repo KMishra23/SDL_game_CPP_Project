@@ -43,7 +43,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 
 		if (!player->IsCollidingWithWalls(0, mymap, CurrentMapNumber)) {
 			player->AttackUp();
-			if (player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY())) {
+			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
 			}
 		}
@@ -52,7 +52,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 		//delayLeft = SDL_GetTicks();
 		if (!player->IsCollidingWithWalls(2, mymap, CurrentMapNumber)) {
 			player->AttackDown();
-			if (player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY())) {
+			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
 			}
 		}
@@ -61,7 +61,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 		//delayLeft = SDL_GetTicks();
 		if (!player->IsCollidingWithWalls(1, mymap, CurrentMapNumber)) {
 			player->AttackLeft();
-			if (player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY())) {
+			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
 			}
 		}
@@ -70,7 +70,7 @@ int KeyboardManager::KeyInputEvent(Player* player, Enemy* enemy, const Uint8* ke
 		//delayLeft = SDL_GetTicks();
 		if (!player->IsCollidingWithWalls(3, mymap, CurrentMapNumber)) {
 			player->AttackRight();
-			if (player->IsCollidingWithEnemy(enemy->GetPosX(), enemy->GetPosY())) {
+			if (player->EnemyCollisionCheck(enemy)) {
 				enemy->SetPos(1024, 1024, 1);
 			}
 		}
