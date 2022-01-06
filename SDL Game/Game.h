@@ -35,6 +35,7 @@ public:
 		return isRunning;
 	}
 	void ShowMenu();
+	void Pause();
 	//bool IsCollidingWithEnemy(Player *player,);
 private:
 	int count = 0;

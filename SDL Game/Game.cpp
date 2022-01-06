@@ -77,11 +77,6 @@ void Game::HandleEvents()
 {
 	SDL_PollEvent(&event);
 	keystates = SDL_GetKeyboardState(NULL);
-	/*
-	if (run = false) {
-		isRunnning = false;
-	}
-	*/
 	switch (event.type)
 	{
 		case SDL_QUIT:
@@ -104,6 +99,20 @@ void Game::HandleEvents()
 					map_number = KIM->KeyInputEvent(player, enemy1, keystates, map,map_number, score);
 				}
 			break;
+			}
+		break;
+
+		case SDL_MOUSEBUTTONDOWN:
+			SDL_Rect Rect;
+			Rect.x = 800;
+			Rect.y = 900 - 195;
+			Rect.w = 195;
+			Rect.h = 80;
+			int Mx, My;
+			SDL_GetMouseState(&Mx, &My);
+			if (Mx >= Rect.x && Mx <= Rect.x + Rect.w && My >= Rect.y && My <= Rect.y + Rect.h)
+			{
+				ShowMenu();
 			}
 		break;
 	}
@@ -197,6 +206,7 @@ void Game::Render()
 		enemy1->Render();
 		turret1->Render();
 		bullet1->Render();
+		Pause();
 		SDL_RenderPresent(renderer);
 	}
 }
@@ -212,7 +222,6 @@ void Game::Clean()
 
 void Game::ShowMenu(){
 	int Mx, My;
-	//bool run = false;
 	isRunning = false;
 
 	SDL_Texture* background = IMG_LoadTexture(renderer, "Assets/bg.png");
@@ -231,7 +240,7 @@ void Game::ShowMenu(){
 		std::cout << "Could not initailize SDL2_ttf, error: " << TTF_GetError() << std::endl;
 		return;
 	}
-	TTF_Font* Font = TTF_OpenFont("Assets/28 Days Later.ttf", 100);
+	TTF_Font* Font = TTF_OpenFont("Assets/Game Of Squids.ttf", 200);
 	if (Font == nullptr) {
 		std::cout << "Could not load font" << std::endl;
 		return;
@@ -250,12 +259,12 @@ void Game::ShowMenu(){
 	SDL_Rect continueGame_Rect, exit_Rect;
 	continueGame_Rect.x = 512 - 507 / 2;
 	continueGame_Rect.y = 402 - 80;
-	continueGame_Rect.w = 507;
-	continueGame_Rect.h = 80;
+	continueGame_Rect.w = 580;
+	continueGame_Rect.h = 100;
 	exit_Rect.x = 512 - 156 / 2;
 	exit_Rect.y = 402 + 80;
-	exit_Rect.w = 156;
-	exit_Rect.h = 80;
+	exit_Rect.w = 200;
+	exit_Rect.h = 100;
 
 	MenuRect[0] = continueGame_Rect;
 	MenuRect[1] = exit_Rect;
@@ -272,25 +281,8 @@ void Game::ShowMenu(){
 			switch (e.type){
 				case SDL_QUIT:
 					isRunning = false;
-					//cout << "Game Over" << endl;
-					//cout << isRunning << endl;
 					return;
 				break;
-				/*
-				case SDL_MOUSEMOTION:
-					SDL_GetMouseState(&Mx, &My);
-					for (int i = 0; i < NUMMENU; i += 1) {
-						if (Mx >= MenuRect[i].x && Mx <= MenuRect[i].x + MenuRect[i].w && My >= MenuRect[i].y && My <= MenuRect[i].y + MenuRect[i].h)
-						{
-							SDL_SetTextureColorMod(menuText[i], 250, 0, 0);
-						}
-						else
-						{
-							SDL_SetTextureColorMod(menuText[i], 250, 250, 250);
-						}
-					}
-				break;
-				*/
 				case SDL_MOUSEBUTTONDOWN:
 					SDL_GetMouseState(&Mx, &My);
 					for (int i = 0; i < NUMMENU; i += 1) {
@@ -305,27 +297,39 @@ void Game::ShowMenu(){
 								return;
 							}
 							else {
-								//cout << "Game Over" << endl;
 								isRunning = false;
 								return;
 							}
 						}
 					}
 				break;
-				/*
-				case SDL_KEYDOWN:
-					if (event.key.keysym.sym == SDLK_ESCAPE)
-					{
-						//cout << "Game Over" << endl;
-						isRunning = false;
-						//cout << isRunning << endl;
-						return;
-					}
-					//break;
-				*/
 			}
 		}
 	}
+	TTF_CloseFont(Font);
+	TTF_Quit();
+}
+
+void Game::Pause(){
+	if (TTF_Init() == -1) {
+		std::cout << "Could not initailize SDL2_ttf, error: " << TTF_GetError() << std::endl;
+		return;
+	}
+	TTF_Font* Font = TTF_OpenFont("Assets/Food Zone.ttf", 130);
+	if (Font == nullptr) {
+		std::cout << "Could not load font" << std::endl;
+		return;
+	}
+	
+	SDL_Surface* TextSurface = TTF_RenderText_Solid(Font, "Pause", {0,250,0 });
+	SDL_Texture* TextTexture = SDL_CreateTextureFromSurface(renderer, TextSurface);
+	SDL_FreeSurface(TextSurface);
+	SDL_Rect Rect;
+	Rect.x = 800;
+	Rect.y = 900 - 195;
+	Rect.w = 210;
+	Rect.h = 100;
+	SDL_RenderCopy(renderer, TextTexture, NULL, &Rect);
 	TTF_CloseFont(Font);
 	TTF_Quit();
 }
