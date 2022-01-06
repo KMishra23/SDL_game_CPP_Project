@@ -84,15 +84,17 @@ void Game::HandleEvents()
 		break;
 
 		case SDL_KEYDOWN:
-			//cout << "Key Pressed" << endl;
+			cout << "Key Pressed" << endl;
 			switch (event.key.keysym.sym)
 			{
+			/*
 			case SDLK_ESCAPE:
 				cout << "Opening Menu" << endl;
 				ShowMenu();
 				cout << "Exiting Menu" << endl;
 				cout << "is Running ->"<<isRunning << endl;
 			break;
+			*/
 			default:
 				if (event.type == SDL_KEYDOWN)
 				{
